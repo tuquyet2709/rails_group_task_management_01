@@ -1,2 +1,6 @@
 en:
+  static_pages:
+    home:
+      title: "Home"
+      base_title: "Group ‘s tasks mangagement"
 
