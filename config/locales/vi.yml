@@ -1,4 +1,8 @@
 vi:
+  flash:
+    cant_find_user: "Không thể tìm thấy user"
+    create_user_successful: "Create user successful!"
+    create_user_eror: "Create user eror!"
   static_pages:
     home:
       title: "Trang chủ"
@@ -23,7 +27,22 @@ vi:
 
     create:
       invalid_message: "Sai email hoặc password"
+
   profile:
     account: "Tài khoản"
     profile: "Hồ sơ"
     logout: "Đăng xuất"
+
+  users:
+    new:
+      signup: "Đăng kí"
+      name: "Tên"
+      email_address: "Địa chỉ email"
+      password: "Mật khẩu"
+      password_confirmation: "Nhập lại mật khẩu"
+      create_my_account: "Tạo tài khoản"
+
+  shared:
+    error_messages:
+      the_form_contains: "Bản đăng kí có"
+      error: "lỗi"
