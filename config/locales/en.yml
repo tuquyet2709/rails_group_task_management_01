@@ -11,3 +11,15 @@ en:
       contact: "Contact Us"
     about:
       title: "About"
+  sessions:
+    new:
+      login: "Login"
+      new_user: "New user?"
+      sign_up_now: "Sign up now!"
+      remember_me: "Remember me on this computer"
+      email_address: "Email address"
+      password: "Password"
+      forgot_password: "Forgot the password?"
+
+    create:
+      invalid_message: "Invalid email/password combination"

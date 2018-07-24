@@ -11,3 +11,15 @@ vi:
       contact: "Liên Hệ"
     about:
       title: "Giới thiệu"
+  sessions:
+    new:
+      login: "Đăng nhập"
+      new_user: "Người dùng mới?"
+      sign_up_now: "Tạo tài khoản ngay"
+      remember_me: "Nhớ tôi"
+      email_address: "Địa chỉ email"
+      password: "Mật khẩu"
+      forgot_password: "Quên mật khẩu"
+
+    create:
+      invalid_message: "Sai email hoặc password"
