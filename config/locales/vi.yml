@@ -23,3 +23,7 @@ vi:
 
     create:
       invalid_message: "Sai email hoặc password"
+  profile:
+    account: "Tài khoản"
+    profile: "Hồ sơ"
+    logout: "Đăng xuất"
