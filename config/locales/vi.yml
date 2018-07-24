@@ -3,3 +3,11 @@ vi:
     home:
       title: "Trang chủ"
       base_title: "Group ‘s tasks mangagement"
+    base_title:
+      company_name: "Framgia"
+      company_mail: "framgia@framgia.com"
+      company_local: "434 Tran Khat Chan"
+      login_register: "Đăng ký và Đăng nhập"
+      contact: "Liên Hệ"
+    about:
+      title: "Giới thiệu"

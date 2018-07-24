@@ -2,4 +2,16 @@
 //= require jquery
 //= require bootstrap
 //= require turbolinks
+//= require jquery-3.2.1.min
+//= require popper
+//= require bootstrap.min
+//= require TweenMax.min
+//= require TimelineMax.min
+//= require ScrollMagic.min
+//= require animation.gsap.min
+//= require ScrollToPlugin.min
+//= require owl.carousel
+//= require easing
+//= require parallax.min
+//= require custom
 //= require_tree .

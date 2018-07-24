@@ -3,4 +3,11 @@ en:
     home:
       title: "Home"
       base_title: "Group ‘s tasks mangagement"
-
+    base:
+      company_name: "Framgia"
+      company_mail: "framgia@framgia.com"
+      company_local: "434 Tran Khat Chan"
+      login_register: "Register or Login"
+      contact: "Contact Us"
+    about:
+      title: "About"

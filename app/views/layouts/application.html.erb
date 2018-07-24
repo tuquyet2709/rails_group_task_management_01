@@ -6,13 +6,13 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
-
   <body>
     <%= link_to "English", locale: "en" %>
     <%= link_to "Vietnamese", locale: "vi" %>
     <%= render "layouts/header" %>
-    <div class="container">
-      <%= yield %>
-    </div>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

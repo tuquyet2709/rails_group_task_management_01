@@ -1,4 +1,11 @@
 /*
  *= require_self
  *= require_tree .
+ *= require animate
+ *= require main_styles
+ *= require owl.carousel
+ *= require owl.theme.default
+ *= require responsive
+ *= require bootstrap.min
+ *= require font-awesome.min
  */
