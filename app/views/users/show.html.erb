@@ -1,1 +1,16 @@
-<%= @user.name %>, <%= @user.email %>
+<%= provide :title, @user.name %>
+<div class="col-lg-3 col-md-6 team_col">
+  <div class="team_item">
+    <div class="team_body">
+      <div class="center_img"><%= gravatar_for @user %></div>
+      <div class="team_title"><a><%= @user.name %></a></div>
+      <div class="team_subtitle"><a><%= @user.email %></div>
+      <div class="social_list">
+        <ul>
+          <li><a><%= link_to t "user.show.following" %></a></li>
+          <li><a><%= link_to t "user.show.follower" %></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

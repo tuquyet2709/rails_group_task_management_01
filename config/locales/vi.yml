@@ -41,7 +41,16 @@ vi:
       password: "Mật khẩu"
       password_confirmation: "Nhập lại mật khẩu"
       create_my_account: "Tạo tài khoản"
-
+      title: "Người dùng mới"
+      content_title: "Đăng ký"
+      content: "Trang đăng ký cho người dùng mới"
+      flash: "chào mừng tới GTM!"
+      user: "Người dùng"
+      update: "Đã update"
+      flash_log_in: "hãy đăng nhập."
+    show:
+      following: "Đang theo dõi"
+      follower: "Theo dõi"
   shared:
     error_messages:
       the_form_contains: "Bản đăng kí có"

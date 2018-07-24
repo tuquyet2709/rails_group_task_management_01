@@ -43,7 +43,16 @@ en:
       password: "Password"
       password_confirmation: "Password Confirmation"
       create_my_account: "Create My Account"
-
+      title: "New User"
+      content_title: "Sign up"
+      content: "This will be a sign up page for new users."
+      flash: "Welcome to the GTM!"
+      user: "User"
+      update: "Profile updated"
+      flash_log_in: "Please log in."
+    show:
+      following: "Following"
+      follower: "Follower"
   shared:
     error_messages:
       the_form_contains: "The form contains"
