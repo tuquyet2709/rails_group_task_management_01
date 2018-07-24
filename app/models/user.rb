@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
+
   has_many :lead_groups, class_name: Group.name, foreign_key: "leader_id"
   has_many :group_members, foreign_key: "member_id"
   has_many :groups, through: :group_members, source: :group
@@ -26,6 +28,35 @@ class User < ApplicationRecord
     allow_nil: true
 
   enum role: {admin: 0, leader: 1, member: 2}
+
+  class << self
+    def digest string
+      cost = if ActiveModel::SecurePassword.min_cost
+               BCrypt::Engine::MIN_COST
+             else
+               BCrypt::Engine.cost
+             end
+      BCrypt::Password.create string, cost: cost
+    end
+
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attributes remember_digest: User.digest(remember_token)
+  end
+
+  def authenticated? remember_token
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password? remember_token
+  end
+
+  def forget
+    update_attributes remember_digest: nil
+  end
 
   private
 

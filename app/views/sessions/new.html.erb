@@ -1,0 +1,18 @@
+<% provide :title, t(".login") %>
+<p class="title-new"><%= t ".login" %></p>
+<br><br><br><br><br><br><br>
+<div class="container">
+  <div class="card card-container">
+    <center><h3><%= t ".login" %></h3></center>
+    <%= form_for(:session, url: login_path, html: {class: "form-signin"}) do |f| %>
+    <%= f.email_field :email, class: "form-control", placeholder: t(".email_address") %>
+    <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
+    <%= f.label :remember_me, class: "checkbox inline" do %>
+    <%= f.check_box :remember_me %>
+    <span><%= t(".remember_me")%></span>
+    <% end %>
+    <%= f.submit t(".login"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+    <% end %>
+    <%= link_to t(".forgot_password"), "#",class: "forgot-password" %>
+  </div>
+</div>
