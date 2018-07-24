@@ -23,3 +23,7 @@ en:
 
     create:
       invalid_message: "Invalid email/password combination"
+  profile:
+    account: "Account"
+    profile: "profile"
+    logout: "logout"

@@ -1,6 +1,7 @@
 <header class="header">
 
   <!-- Top Bar -->
+  <% unless logged_in? %>
   <div class="top_bar">
     <div class="top_bar_container">
       <div class="container">
@@ -16,7 +17,9 @@
                 </li>
               </ul>
               <div class="top_bar_login ml-auto">
-                <div class="login_button"><a href="#"><%= t "static_pages.base.login_register" %></a></div>
+                <div class="login_button">
+                <%= link_to t("static_pages.base.login_register"), login_path %>
+                </div>
               </div>
             </div>
           </div>
@@ -24,6 +27,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
   <!-- Header Content -->
   <div class="header_container">
@@ -32,14 +36,28 @@
         <div class="col">
           <div class="header_content d-flex flex-row align-items-center justify-content-start">
             <div class="logo_container">
-              <a href="#">
+              <%= link_to root_path do %>
                 <div class="logo_text">GT<span>M</span></div>
-              </a>
+              <% end %>
             </div>
             <nav class="main_nav_contaner ml-auto">
               <ul class="main_nav">
-                <li class="active"><a href="#"><%= t "static_pages.home.title" %></a></li>
-                <li><a href="#"><%= t "static_pages.about.title" %></a></li>
+                <li class="active"><%= link_to t("static_pages.home.title"), root_path %></li>
+                <li><%= link_to t("static_pages.about.title"), "#" %></a></li>
+                <% if logged_in? %>
+                <li class="dropdown">
+                  <%= link_to "#", {class: "dropdown-toggle", "data-toggle": "dropdown"} do %>
+                    <%= t"profile.account" %> <b class="caret"></b>
+                  <% end %>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to t("profile.profile"), "#" %></li>
+                    <li class="divider"></li>
+                    <li>
+                      <%= link_to t("profile.logout"), logout_path, method: :delete %>
+                    </li>
+                  </ul>
+                </li>
+                <% end %>
               </ul>
             </nav>
           </div>
