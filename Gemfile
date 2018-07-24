@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "bcrypt"
+gem "bootstrap"
 gem "bootstrap-sass", "3.3.7"
 gem "bootstrap-will_paginate"
 gem "carrierwave"
@@ -13,6 +14,7 @@ gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "faker"
 gem "figaro"
+gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "mini_magick"
