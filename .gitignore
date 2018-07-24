@@ -59,6 +59,3 @@ config/environments/*.local.yml
 /.idea/*
 
 /config/application.yml
-
-# Ignore application configuration
-/config/application.yml
