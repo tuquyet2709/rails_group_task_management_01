@@ -55,6 +55,11 @@ en:
     show:
       following: "Following"
       follower: "Follower"
+    edit:
+      title_edit: "Edit profile"
+      save_changes: "Save changes"
+      update_your_profile: "Update your profile"
+      change: "Change"
   shared:
     error_messages:
       the_form_contains: "The form contains"
