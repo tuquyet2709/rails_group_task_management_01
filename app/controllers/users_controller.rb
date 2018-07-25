@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_url unless @user
+    render "show_#{@user.role}"
   end
 
   def index

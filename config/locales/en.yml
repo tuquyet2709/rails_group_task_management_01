@@ -55,6 +55,8 @@ en:
     show:
       following: "Following"
       follower: "Follower"
+      group_management: "Groups management"
+      create_group: "Create new group"
     edit:
       title_edit: "Edit profile"
       save_changes: "Save changes"

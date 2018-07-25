@@ -53,12 +53,13 @@ vi:
     show:
       following: "Đang theo dõi"
       follower: "Theo dõi"
+      group_management: "Quản lý nhóm"
+      create_group: "Tạo nhóm"
     edit:
       title_edit: "Chỉnh sửa hồ sơ"
       save_changes: "Lưu thay đổi"
       update_your_profile: "Chỉnh sửa hồ sơ của bạn"
       change: "Thay đổi"
-
   shared:
     error_messages:
       the_form_contains: "Bản đăng kí có"
