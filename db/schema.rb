@@ -10,23 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180723060651) do
+ActiveRecord::Schema.define(version: 20180725031340) do
 
-  create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "member_id"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "leader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["leader_id"], name: "index_groups_on_leader_id", unique: true
+    t.string "name"
+    t.string "description"
   end
 
-  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180723060651) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "member_id"
     t.string "content"
     t.datetime "created_at", null: false
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180723060651) do
     t.index ["member_id"], name: "index_reports_on_member_id"
   end
 
-  create_table "subtasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "subtasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "task_id"
     t.string "content"
     t.boolean "done"
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 20180723060651) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "content"
     t.date "start_date"
     t.date "end_date"
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180723060651) do
     t.index ["member_id"], name: "index_tasks_on_member_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "email"
     t.boolean "admin"

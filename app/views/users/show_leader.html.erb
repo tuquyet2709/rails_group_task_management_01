@@ -1,0 +1,70 @@
+<%= provide :title, @user.name %>
+<div class="row">
+  <div class="col-lg-3 col-md-6 team_col">
+    <div class="team_item">
+      <div class="team_body">
+        <div class="center_img"><%= gravatar_for @user %></div>
+        <div class="team_title"><a><%= @user.name %></a></div>
+        <div class="team_subtitle"><a><%= @user.email %></div>
+        <div class="social_list">
+          <ul>
+            <li><%= link_to t "users.show.create_group" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-6 team_col">
+    <div class="team_item">
+    <div>
+        <section id="team" class="pb-5">
+          <div class="container">
+            <center><h5><%= t "users.show.group_management" %></h5></center>
+            <hr>
+            <div class="row">
+              <% @user.lead_groups.each do |group| %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip">
+                  <div class="mainflip">
+                    <div class="frontside">
+                      <div class="card">
+                        <div class="card-body text-center">
+                          <p>
+                          <%= image_tag("https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_02.png", class: "img-fluid") %>
+                          </p>
+                          <h4 class="card-title"><%= group.name %></h4>
+                          <p class="card-text"><%= group.description %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="backside">
+                      <div class="card">
+                        <div class="card-body text-center mt-4">
+                          <h4 class="card-title"><%= group.name %></h4>
+                          <p class="card-text"><%= group.description %></p>
+                          <ul class="list-inline">
+                            <li class="list-inline-item">
+                              <%= link_to "http://facebook.com" do %>
+                                <i class="fa fa-facebook"></i>
+                              <% end %>
+                            </li>
+                            <li class="list-inline-item">
+                              <%= link_to root_path do %>
+                                <i class="fa fa-hand-o-up"></i>
+                              <% end %>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,5 @@ class CreateGroups < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :groups, :leader_id, unique: true
   end
 end
