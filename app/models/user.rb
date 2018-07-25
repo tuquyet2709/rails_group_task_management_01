@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save :downcase_email
+
+  enum role: {admin: 0, leader: 1, member: 2}
+  validates :role, presence: true
   validates :name, presence: true,
     length: {maximum: Settings.maximum.length_name}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -26,8 +29,6 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: {minimum: Settings.minimum.length_pass},
     allow_nil: true
-
-  enum role: {admin: 0, leader: 1, member: 2}
 
   class << self
     def digest string
