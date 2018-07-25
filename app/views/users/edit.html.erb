@@ -1,13 +1,21 @@
-<% provide :title, t(".title") %>
-<% provide :button_text, t(".confirmation") %>
-<h1><%= t ".edit_title_content" %></h1>
-
+<% provide :title, t(".title_edit") %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render "form" %>
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <%= link_to t(".change"), "http://gravatar.com/emails", target: "_blank" %>
+  <div class="container">
+    <div class="card card-container">
+      <center><h3><%= t ".update_your_profile" %></h3></center>
+      <%= form_for @user, html: {class: "form-signin"} do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <%= f.text_field :name, class: "form-control", placeholder: t("users.new.name") %>
+        <%= f.email_field :email, class: "form-control", placeholder: t("users.new.email_address") %>
+        <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("users.new.password_confirmation") %>
+        <div class="gravatar_edit">
+          <%= gravatar_for @user %>
+          <%= link_to t(".change"), "http://gravatar.com/emails", target: "_blank" %>
+        </div>
+        <%= f.submit t(".save_changes"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+      <% end %>
     </div>
   </div>
+
 </div>
