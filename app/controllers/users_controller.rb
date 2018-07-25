@@ -9,13 +9,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_param
+    @user = User.new user_params
     if @user.save
       log_in @user
       flash[:info] = t "flash.create_user_successful"
       redirect_to root_path
     else
       flash.now[:danger] = t "flash.create_user_eror"
+      render :new
     end
   end
 
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = t "users.new.update"
+      flash[:success] = t "flash.user_updated"
       redirect_to @user
     else
       render :edit
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    flash[:success] = t "users.edit.delete"
+    flash[:success] = t "flash.user_deleted"
     redirect_to users_url
   end
 
@@ -55,13 +56,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+      :password_confirmation, :role
   end
 
   def logged_in_user
     return if logged_in?
     store_location
-    flash[:danger] = t "users.new.flash_log_in"
+    flash[:danger] = t "flash.log_in"
     redirect_to login_url
   end
 

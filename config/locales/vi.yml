@@ -3,6 +3,10 @@ vi:
     cant_find_user: "Không thể tìm thấy user"
     create_user_successful: "Create user successful!"
     create_user_eror: "Create user eror!"
+    invalid_message: "Sai email hoặc password"
+    user_updated: "Đã update"
+    user_deleted: "Đã xoá user"
+    log_in: "hãy đăng nhập."
   static_pages:
     home:
       title: "Trang chủ"
@@ -25,9 +29,6 @@ vi:
       password: "Mật khẩu"
       forgot_password: "Quên mật khẩu"
 
-    create:
-      invalid_message: "Sai email hoặc password"
-
   profile:
     account: "Tài khoản"
     profile: "Hồ sơ"
@@ -46,8 +47,9 @@ vi:
       content: "Trang đăng ký cho người dùng mới"
       flash: "chào mừng tới GTM!"
       user: "Người dùng"
-      update: "Đã update"
-      flash_log_in: "hãy đăng nhập."
+      choose_your_role: "Chọn vai trò"
+      member: "member"
+      leader: "leader"
     show:
       following: "Đang theo dõi"
       follower: "Theo dõi"

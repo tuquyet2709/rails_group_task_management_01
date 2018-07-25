@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       remember? user
       redirect_to root_path
     else
-      flash.now[:danger] = t ".invalid_message"
+      flash.now[:danger] = t "flash.invalid_message"
       render :new
     end
   end
