@@ -2,7 +2,8 @@ en:
   flash:
     cant_find_user: "Can't find user"
     create_user_successful: "Create user successful!"
-    create_user_eror: "Create user eror!"
+    create_user_eror: "Create user erorr!"
+    create_group_eror: "Create group erorr!"
     invalid_message: "Invalid email/password combination"
     user_updated: "Profile updated"
     user_deleted: "User deleted"
@@ -83,3 +84,8 @@ en:
     submit_unfollow: "Unfollow"
     following: "Following"
     follower: "Follower"
+  group:
+    name: "Group name"
+    function: "Function"
+    description: "Description"
+    select_imgage: "Select imgage"

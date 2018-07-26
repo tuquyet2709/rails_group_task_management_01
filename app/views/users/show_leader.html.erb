@@ -8,7 +8,7 @@
         <div class="team_subtitle"><a><%= @user.email %></div>
         <div class="social_list">
           <ul>
-            <li><%= link_to t "users.show.create_group" %></li>
+            <%= link_to t("users.show.create_group"), "#", "data-toggle" => "modal", 'data-target' => '#squarespaceModal' %>
           </ul>
         </div>
       </div>
@@ -16,7 +16,7 @@
   </div>
   <div class="col-lg-9 col-md-6 team_col">
     <div class="team_item">
-    <div>
+      <div>
         <section id="team" class="pb-5">
           <div class="container">
             <center><h5><%= t "users.show.group_management" %></h5></center>
@@ -30,7 +30,7 @@
                       <div class="card">
                         <div class="card-body text-center">
                           <p>
-                          <%= image_tag("https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_02.png", class: "img-fluid") %>
+                           <%= image_tag group.picture.url, class: "img-fluid" %>
                           </p>
                           <h4 class="card-title"><%= group.name %></h4>
                           <p class="card-text"><%= group.description %></p>
@@ -45,12 +45,12 @@
                           <ul class="list-inline">
                             <li class="list-inline-item">
                               <%= link_to "http://facebook.com" do %>
-                                <i class="fa fa-facebook"></i>
+                              <i class="fa fa-facebook"></i>
                               <% end %>
                             </li>
                             <li class="list-inline-item">
                               <%= link_to root_path do %>
-                                <i class="fa fa-hand-o-up"></i>
+                              <i class="fa fa-hand-o-up"></i>
                               <% end %>
                             </li>
                           </ul>
@@ -64,6 +64,46 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="lineModalLabel">
+          <%= t "users.show.create_group" %>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <%= form_for (@group) do |f| %>
+        <div class="form-group">
+          <label for="exampleInputEmail1"><%= t "group.name" %></label>
+          <%= f.text_field :name, class: "form-control", placeholder: t("group.name") %>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1"><%= t "group.function" %></label>
+          <%= f.text_field :function, class: "form-control", placeholder: t("group.description") %>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1"><%= t "group.description" %></label>
+          <%= f.text_field :description, class: "form-control", placeholder: t("group.description") %>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">
+          <%= t "group.select_imgage" %>
+          </label>
+          <%= f.file_field :picture %>
+        </div>
+        <%= f.submit t("users.show.create_group"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

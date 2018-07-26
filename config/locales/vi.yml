@@ -2,7 +2,8 @@ vi:
   flash:
     cant_find_user: "Không thể tìm thấy user"
     create_user_successful: "Create user successful!"
-    create_user_eror: "Create user eror!"
+    create_user_eror: "Create user erorr!"
+    create_group_erorr: "Create group erorr!"
     invalid_message: "Sai email hoặc password"
     user_updated: "Đã update"
     user_deleted: "Đã xoá user"
@@ -82,3 +83,7 @@ vi:
     submit_unfollow: "Bỏ Theo Dõi"
     following: "Đang Theo Dõi"
     follower: "Theo dõi"
+  group:
+    name: "Tên nhóm"
+    function: "Chức năng của nhóm"
+    description: "Mô tả"
