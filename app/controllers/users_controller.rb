@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
-  before_action :find_user, only: [:edit, :update, :show, :destroy]
+  before_action :find_user, only: [:edit, :update, :show, :destroy,
+                                   :followers, :following]
 
   def new
     @user = User.new
@@ -23,8 +24,8 @@ class UsersController < ApplicationController
   def show
     if @user.member?
       if @user && @user.activated
-        @reports = @user.reports.order_desc.paginate page: params[:page],
-                                                     per_page: Settings.users.per_page
+        @reports = current_user.feed.paginate page: params[:page],
+                                              per_page: Settings.users.per_page
         @report = current_user.reports.build
       else
         redirect_to root_url
@@ -54,6 +55,18 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def following
+    @title = t "follow.following"
+    @users = @user.following.paginate page: params[:page]
+    render "show_follow"
+  end
+
+  def followers
+    @title = t "follow.follower"
+    @users = @user.followers.paginate page: params[:page]
+    render "show_follow"
+  end
+
   private
 
   def find_user
@@ -65,7 +78,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-                                 :password_confirmation, :role
+      :password_confirmation, :role
   end
 
   def correct_user

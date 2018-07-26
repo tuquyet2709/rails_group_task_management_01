@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20180725031340) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "description"
-    t.index ["leader_id"], name: "index_groups_on_leader_id", unique: true
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
