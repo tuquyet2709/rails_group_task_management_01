@@ -59,6 +59,25 @@ class User < ApplicationRecord
     update_attributes remember_digest: nil
   end
 
+  def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
+  def following? other_user
+    following.include? other_user
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :member_id"
+    Report.where("member_id IN (#{following_ids})
+                     OR member_id = :member_id", member_id: id)
+  end
+
   private
 
   def downcase_email

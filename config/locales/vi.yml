@@ -76,3 +76,9 @@ vi:
     Posted: "Đã đăng tải"
     ago: "trước."
     write_new: "Viết report mới"
+    friend: "Report của bạn bè"
+  follow:
+    submit_follow: "Theo Dõi"
+    submit_unfollow: "Bỏ Theo Dõi"
+    following: "Đang Theo Dõi"
+    follower: "Theo dõi"

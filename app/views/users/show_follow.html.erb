@@ -1,4 +1,4 @@
-<%= provide :title, @user.name %>
+<% provide :title, @title %>
 <div class="row">
   <div class="col-lg-3 col-md-6 team_col">
     <div class="team_item">
@@ -6,7 +6,6 @@
         <div class="center_img"><%= gravatar_for @user %></div>
         <div class="team_title"><a><%= @user.name %></a></div>
         <div class="team_subtitle"><a><%= @user.email %></div>
-        <div class="team_subtitle"><a><%= t "report.title" %> (<%= @user.reports.count %>) </a></div>
         <div class="social_list">
           <% @user ||= current_user %>
           <ul>
@@ -20,22 +19,17 @@
             </li>
           </ul>
         </div>
-        <%= render "follow_form" if logged_in? %>
       </div>
     </div>
 
   </div>
   <div class="col-md-8">
-    <% if current_user? @user %>
-      <div id="report-errors"></div>
-      <%= render "shared/report_form" %>
-    <% end %>
-    <% if @user.reports.any? %>
-      <h3><%= t "report.friend" %> </h3>
-      <ol class="reports">
-        <%= render @reports %>
-      </ol>
-      <%= will_paginate @reports, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
     <% end %>
   </div>
 </div>

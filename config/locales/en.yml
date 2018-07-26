@@ -77,3 +77,9 @@ en:
     Posted: "Posted"
     ago: "ago."
     write_new: "Write new report"
+    friend: "Friend Report"
+  follow:
+    submit_follow: "Follow"
+    submit_unfollow: "Unfollow"
+    following: "Following"
+    follower: "Follower"

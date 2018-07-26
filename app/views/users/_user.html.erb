@@ -1,4 +1,4 @@
-<li>
+<li class="margin_li_user">
   <%= gravatar_for user, size: Settings.users.size_page %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
