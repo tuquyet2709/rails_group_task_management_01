@@ -7,7 +7,7 @@ en:
     user_updated: "Profile updated"
     user_deleted: "User deleted"
     log_in: "Please log in."
-
+    destroy_report: "Report deleted"
   static_pages:
     home:
       title: "Home"
@@ -66,3 +66,14 @@ en:
     error_messages:
       the_form_contains: "The form contains"
       error: "error"
+  report:
+    create: "Report created!"
+    delete: "delete"
+    sure: "You sure?"
+    title: "Report"
+    content_demo: "Compose new report..."
+    post: "Post"
+    by: "By"
+    Posted: "Posted"
+    ago: "ago."
+    write_new: "Write new report"

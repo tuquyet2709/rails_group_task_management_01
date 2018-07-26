@@ -11,7 +11,7 @@ vi:
     home:
       title: "Trang chủ"
       base_title: "Group ‘s tasks mangagement"
-    base_title:
+    base:
       company_name: "Framgia"
       company_mail: "framgia@framgia.com"
       company_local: "434 Tran Khat Chan"
@@ -64,3 +64,15 @@ vi:
     error_messages:
       the_form_contains: "Bản đăng kí có"
       error: "lỗi"
+  report:
+    create: "Đã tạo report!"
+    delete: "Xóa"
+    sure: "Bạn chắc chưa?"
+    destroy: "Đã xóa Report"
+    title: "Report"
+    content_demo: "Viết mới report..."
+    post: "Đăng"
+    by: "Bởi"
+    Posted: "Đã đăng tải"
+    ago: "trước."
+    write_new: "Viết report mới"
