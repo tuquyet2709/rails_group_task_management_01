@@ -14,4 +14,5 @@
 //= require easing
 //= require parallax.min
 //= require custom
+//= require custom.bundle
 //= require_tree .

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :find_user, only: [:edit, :update, :show, :destroy,
@@ -21,17 +21,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    if @user.member?
-      if @user && @user.activated
-        @reports = current_user.feed.paginate page: params[:page],
+  def show_member
+    @reports = current_user.feed.order_desc.paginate page: params[:page],
                                               per_page: Settings.users.per_page
-        @report = current_user.reports.build
+    @report = current_user.reports.build
+    render "show_member"
+  end
+
+  def show
+    redirect_to root_url unless @user&.activated
+    show_member if @user.member?
+
+    if @user.leader?
+      if current_user != @user
+        redirect_to current_user
       else
-        redirect_to root_url
+        @group = Group.new
+        render "show_leader"
       end
     end
-    render "show_#{@user.role}"
   end
 
   def index

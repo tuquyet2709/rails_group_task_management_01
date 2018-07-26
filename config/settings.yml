@@ -1,6 +1,8 @@
   maximum:
     length_email: 255
     length_name: 50
+    group_function: 30
+    group_description: 100
   minimum:
     length_pass: 6
   users:

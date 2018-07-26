@@ -59,3 +59,4 @@ config/environments/*.local.yml
 /.idea/*
 
 /config/application.yml
+public/uploads
