@@ -1,16 +1,32 @@
 <%= provide :title, @user.name %>
-<div class="col-lg-3 col-md-6 team_col">
-  <div class="team_item">
-    <div class="team_body">
-      <div class="center_img"><%= gravatar_for @user %></div>
-      <div class="team_title"><a><%= @user.name %></a></div>
-      <div class="team_subtitle"><a><%= @user.email %></div>
-      <div class="social_list">
-        <ul>
-          <li><a><%= link_to t "user.show.following" %></a></li>
-          <li><a><%= link_to t "user.show.follower" %></a></li>
-        </ul>
+<div class="row">
+  <div class="col-lg-3 col-md-6 team_col">
+    <div class="team_item">
+      <div class="team_body">
+        <div class="center_img"><%= gravatar_for @user %></div>
+        <div class="team_title"><a><%= @user.name %></a></div>
+        <div class="team_subtitle"><a><%= @user.email %></div>
+        <div class="social_list">
+          <ul>
+            <li><a><%= link_to t "user.show.following" %></a></li>
+            <li><a><%= link_to t "user.show.follower" %></a></li>
+          </ul>
+        </div>
       </div>
     </div>
+
+  </div>
+  <div class="col-md-8">
+    <% if current_user? @user %>
+      <div id="report-errors"></div>
+      <%= render "shared/report_form" %>
+    <% end %>
+    <% if @user.reports.any? %>
+      <h3><%= t "report.title" %> (<%= @user.reports.count %>)</h3>
+      <ol class="reports">
+        <%= render @reports %>
+      </ol>
+      <%=  will_paginate @reports, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+    <% end %>
   </div>
 </div>

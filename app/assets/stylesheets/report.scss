@@ -1,0 +1,81 @@
+@import 'bootstrap';
+
+$gray-medium-light: #eaeaea;
+$gray: #bbb;
+$gray-2: #e8e8e8;
+
+.reports {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid $gray-2;
+    overflow: hidden;
+  }
+
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+
+  .content {
+    display: block;
+    margin-left: 60px;
+
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+
+  .timestamp {
+    color: $gray-2;
+    display: block;
+    margin-left: 60px;
+  }
+
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+.submit_report {
+  height: 40px !important;
+  width: 60px !important;
+}
+
+.content_report {
+  height: 150px !important;
+  width: 800px !important;
+}
+
+.control_report_submit {
+  float: right;
+  margin-right: -5%;
+}
+
+.control_content_report {
+  margin-left: -20px;
+}
+
+.report_list {
+  display: inline-flex;
+}
+
+.context_report {
+  font-weight: bold;
+}
+
+.fix_report {
+  margin-bottom: 50px;
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}

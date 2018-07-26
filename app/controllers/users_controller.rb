@@ -21,12 +21,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    if @user.member?
+      if @user && @user.activated
+        @reports = @user.reports.order_desc.paginate page: params[:page],
+                                                     per_page: Settings.users.per_page
+        @report = current_user.reports.build
+      else
+        redirect_to root_url
+      end
+    end
     render "show_#{@user.role}"
   end
 
   def index
     @users = User.paginate page: params[:page],
-      per_page: Settings.users.per_page
+                           per_page: Settings.users.per_page
   end
 
   def edit; end
@@ -56,7 +65,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation, :role
+                                 :password_confirmation, :role
   end
 
   def correct_user
