@@ -1,0 +1,372 @@
+<% provide :title, t(".title") %>
+
+<div class="super_container">
+
+  <!-- Home -->
+
+  <div class="home">
+    <div class="home_slider_container">
+
+      <!-- Home Slider -->
+      <div class="owl-carousel owl-theme home_slider">
+
+        <!-- Home Slider Item -->
+        <div class="owl-item">
+          <div class="home_slider_background" style="background-image:url(assets/home_slider_1.jpg)"></div>
+          <div class="home_slider_content">
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <div class="home_slider_title"><%= t ".base_title" %></div>
+                  <div class="home_slider_subtitle"><%= t(".furture_of_teamwork") %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home Slider Item -->
+        <div class="owl-item">
+          <div class="home_slider_background" style="background-image:url(assets/home_slider_1.jpg)"></div>
+          <div class="home_slider_content">
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <div class="home_slider_title"><%= t(".premium_management_system") %></div>
+                  <div class="home_slider_subtitle"><%= t(".manage_your_tasks_easier") %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home Slider Item -->
+        <div class="owl-item">
+          <div class="home_slider_background" style="background-image:url(assets/home_slider_1.jpg)"></div>
+          <div class="home_slider_content">
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <div class="home_slider_title"><%= t(".dont_worry_about_deadline") %></div>
+                  <div class="home_slider_subtitle"><%= t(".enhance_your_work_efficiency") %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Home Slider Nav -->
+
+    <div class="home_slider_nav home_slider_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+    <div class="home_slider_nav home_slider_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  </div>
+
+  <!-- Features -->
+
+  <div class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title"><%= t(".welcome") %></h2>
+            <div class="section_subtitle"><p><%= t ".what_is_gtm" %></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="row features_row">
+
+        <!-- Features Item -->
+        <div class="col-lg-3 feature_col">
+          <div class="feature text-center trans_400">
+            <div class="feature_icon"><img src="assets/icon_1.png" alt=""></div>
+            <h3 class="feature_title"><%= t(".setting_your_teamwork") %></h3>
+            <div class="feature_text"><p><%= t ".sample_content" %></p></div>
+          </div>
+        </div>
+
+        <!-- Features Item -->
+        <div class="col-lg-3 feature_col">
+          <div class="feature text-center trans_400">
+            <div class="feature_icon"><img src="assets/icon_2.png" alt=""></div>
+            <h3 class="feature_title"><%= t(".tasks_tracking") %></h3>
+            <div class="feature_text"><p><%= t ".sample_content" %></p></div>
+          </div>
+        </div>
+
+        <!-- Features Item -->
+        <div class="col-lg-3 feature_col">
+          <div class="feature text-center trans_400">
+            <div class="feature_icon"><img src="assets/icon_3.png" alt=""></div>
+            <h3 class="feature_title"><%= t(".make_report_easier") %></h3>
+            <div class="feature_text"><p><%= t ".sample_content" %></p></div>
+          </div>
+        </div>
+
+        <!-- Features Item -->
+        <div class="col-lg-3 feature_col">
+          <div class="feature text-center trans_400">
+            <div class="feature_icon"><img src="assets/icon_4.png" alt=""></div>
+            <h3 class="feature_title"><%= t(".statistics_your_works") %></h3>
+            <div class="feature_text"><p><%= t ".sample_content" %></p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Courses -->
+
+  <div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title"><%= t(".popular_groups") %></h2>
+            <div class="section_subtitle">
+              <p><%= t(".sample_content") %><br><%= t(".sample_content") %><br><%= t(".sample_content") %></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="row courses_row">
+
+        <!-- Course -->
+        <div class="col-lg-4 course_col">
+          <div class="course">
+            <div class="course_image"><img src="assets/group_1.jpg" alt=""></div>
+            <div class="course_body">
+              <h3 class="course_title"><%= link_to t(".education_labository"), login_path %></h3>
+              <div class="course_teacher"><%= t(".framgia") %></div>
+              <div class="course_text"><p><%= t(".sample_content") %></p></div>
+            </div>
+            <div class="course_footer">
+              <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                <div class="course_info">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  <span><%= t(".999_members") %></span>
+                </div>
+                <div class="course_info">
+                  <i class="fa fa-address-book" aria-hidden="true"></i>
+                  <span><%= t(".40_leaders") %></span>
+                </div>
+                <div class="course_price ml-auto"><%= link_to t(".join_now"), login_path %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course -->
+        <div class="col-lg-4 course_col">
+          <div class="course">
+            <div class="course_image"><img src="assets/group_2.jpg" alt=""></div>
+            <div class="course_body">
+              <h3 class="course_title"><%= link_to t(".developing_mobile_apps"), login_path %></h3>
+              <div class="course_teacher"><%= t(".doan_van_toan") %></div>
+              <div class="course_text"><p><%= t(".sample_content") %></p></div>
+            </div>
+            <div class="course_footer">
+              <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                <div class="course_info">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  <span><%= t(".90_members") %></span>
+                </div>
+                <div class="course_info">
+                  <i class="fa fa-address-book" aria-hidden="true"></i>
+                  <span><%= t(".10_leaders") %></span>
+                </div>
+                <div class="course_price ml-auto"><%= link_to t(".join_now"), login_path %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course -->
+        <div class="col-lg-4 course_col">
+          <div class="course">
+            <div class="course_image"><img src="assets/group_3.jpg" alt=""></div>
+            <div class="course_body">
+              <h3 class="course_title"><%= link_to t(".framgia_restaurant"), login_path %></h3>
+              <div class="course_teacher"><%= t(".lionel_penaldo") %></div>
+              <div class="course_text"><p><%= t(".sample_content") %></p></div>
+            </div>
+            <div class="course_footer">
+              <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                <div class="course_info">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  <span><%= t(".90_members") %></span>
+                </div>
+                <div class="course_info">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span><%= t(".10_leaders") %></span>
+                </div>
+                <div class="course_price ml-auto"><%= link_to t(".join_now"), login_path %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="courses_button trans_200"><%= link_to t(".join_with_us"), login_path %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Counter -->
+
+  <div class="counter">
+    <div class="counter_background" style="background-image:url(assets/counter_background.jpg)"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="counter_content">
+            <h2 class="counter_title"><%= t(".register_now") %></h2>
+            <div class="counter_text">
+              <p><%= t(".what_is_gtm") %></p></div>
+
+            <!-- Milestones -->
+
+            <div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
+
+              <!-- Milestone -->
+              <div class="milestone">
+                <div class="milestone_counter" data-end-value="10">0</div>
+                <div class="milestone_text"><%= t(".years") %></div>
+              </div>
+
+              <!-- Milestone -->
+              <div class="milestone">
+                <div class="milestone_counter" data-end-value="96" data-sign-after="k">0</div>
+                <div class="milestone_text"><%= t(".users") %></div>
+              </div>
+
+              <!-- Milestone -->
+              <div class="milestone">
+                <div class="milestone_counter" data-end-value="99" data-sign-after="+">0</div>
+                <div class="milestone_text"><%= t(".groups") %></div>
+              </div>
+
+              <!-- Milestone -->
+              <div class="milestone">
+                <div class="milestone_counter" data-end-value="6000" data-sign-after="+">0</div>
+                <div class="milestone_text"><%= t(".tasks") %></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="counter_form">
+        <div class="row fill_height">
+          <div class="col fill_height">
+
+            <div class="counter_noti_ready"><h4>Are you ready to make your work awesome with us?</h4></div>
+            <div class="courses_button trans_500"><%= link_to t(".lets_register_now"), signup_path %></div>
+            <div><img src="assets/gallery_1.jpg" alt="" class="welcome_image"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Team -->
+
+  <div class="team">
+    <div class="team_background parallax-window" data-parallax="scroll" data-image-src="images/team_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title"><%= t(".about") %></h2>
+            <div class="section_subtitle">
+              <p><%= t(".simple_text") %></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="row team_row">
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image"><img src="assets/team_1.jpg" alt=""></div>
+            <div class="team_body">
+              <div class="team_title"><%= link_to t(".chu_thanh_hung"), "#" %></div>
+              <div class="team_subtitle"><%= t(".manager") %></div>
+              <div class="social_list">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image"><img src="assets/team_2.jpg" alt=""></div>
+            <div class="team_body">
+              <div class="team_title"><%= link_to t(".nguyen_dang_hai"), "#" %></div>
+              <div class="team_subtitle"><%= t(".developer") %></div>
+              <div class="social_list">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image"><img src="assets/team_3.jpg" alt=""></div>
+            <div class="team_body">
+              <div class="team_title"><%= link_to t(".nguyen_tu_quyet"), "#" %></div>
+              <div class="team_subtitle"><%= t(".marketing") %></div>
+              <div class="social_list">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image"><img src="assets/team_4.jpg" alt=""></div>
+            <div class="team_body">
+              <div class="team_title"><%= link_to t(".le_huynh_duc"), "#" %></div>
+              <div class="team_subtitle"><%= t(".designer_and_website") %></div>
+              <div class="social_list">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
