@@ -77,7 +77,6 @@
 	}
 	.milestone:not(:last-child)::after
 	{
-		display: none;
 	}
 	.team_image
 	{
