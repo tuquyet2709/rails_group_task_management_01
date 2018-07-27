@@ -6,12 +6,12 @@ class User < ApplicationRecord
   has_many :groups, through: :group_members, source: :group
   has_many :reports, foreign_key: "member_id"
   has_many :active_relationships, class_name: Relationship.name,
-    foreign_key: "follower_id",
-    dependent: :destroy
+           foreign_key: "follower_id",
+           dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :passive_relationships, class_name: Relationship.name,
-    foreign_key: "followed_id",
-    dependent: :destroy
+           foreign_key: "followed_id",
+           dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save :downcase_email
@@ -19,16 +19,19 @@ class User < ApplicationRecord
   enum role: {admin: 0, leader: 1, member: 2}
   validates :role, presence: true
   validates :name, presence: true,
-    length: {maximum: Settings.maximum.length_name}
+            length: {maximum: Settings.maximum.length_name}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
-    length: {maximum: Settings.maximum.length_email},
-    format: {with: VALID_EMAIL_REGEX},
-    uniqueness: {case_sensitive: false}
+            length: {maximum: Settings.maximum.length_email},
+            format: {with: VALID_EMAIL_REGEX},
+            uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true,
-    length: {minimum: Settings.minimum.length_pass},
-    allow_nil: true
+            length: {minimum: Settings.minimum.length_pass},
+            allow_nil: true
+
+  scope :search_by_name,->(name){where("name like ? and role = ?",
+                                       "%#{name}%",User.roles[:member])}
 
   class << self
     def digest string
@@ -76,6 +79,10 @@ class User < ApplicationRecord
                      WHERE  follower_id = :member_id"
     Report.where("member_id IN (#{following_ids})
                      OR member_id = :member_id", member_id: id)
+  end
+
+  def in_group group
+    GroupMember.where(group: group, user: self).blank?
   end
 
   private

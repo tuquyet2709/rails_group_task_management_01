@@ -1,0 +1,93 @@
+<div class="courses">
+  <div class="container">
+    <div class="row">
+      <!-- Courses Main Content -->
+      <div class="col-lg-8">
+        <center>
+          <div class="sidebar_section_title"><%= t "group.task_list" %></div>
+        </center>
+        <div class="courses_container">
+          <div class="row courses_row">
+            <% @group.tasks.each do |task| %>
+              <!-- Course -->
+              <div class="col-lg-6 course_col">
+                <div class="course">
+                  <div class="course_image"><img src="assets/images/group_1.jpg" alt=""></div>
+                  <div class="course_body">
+                    <h3 class="course_title"><a href="course.html"><%= task.content %></a></h3>
+                    <div class="course_teacher">Mr. <%= task.group.leader.name %></div>
+                    <div class="course_text">
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="course_footer">
+                    <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                      <div class="course_info">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span><%= t "groups.members" %></span>
+                      </div>
+                      <div class="course_info">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span><%= t "group.subtasks" %></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Courses Sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- Categories -->
+          <div class="sidebar_section">
+            <div class="sidebar_section_title"><%= t "group.main_function" %></div>
+            <div class="sidebar_categories">
+              <ul>
+                <li><%= link_to t("group.task_list"), "#" %></li>
+                <li><%= link_to t("group.member_list"), "#" %></li>
+                <li><%= link_to t("group.member_report"), "#" %></li>
+                <li><%= link_to t("group.statistic"), "#" %></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Latest Course -->
+          <div class="sidebar_section">
+            <div class="courses_search_container">
+              <%= form_for :search, url: search_path, html: {class: "courses_search_form d-flex flex-row align-items-center justify-content-start"} do |f| %>
+                <%= f.text_field :name, class: "courses_search_input", placeholder: t("group.search_member"), required: "required" %>
+                <%= f.hidden_field :group, value: @group.id %>
+                <%= f.submit t("group.search"), class: "courses_search_button ml-auton" %>
+              <% end %>
+            </div>
+            <div class="sidebar_section_title"><%= t "group.members" %></div>
+            <div class="sidebar_latest">
+              <% @users.each do |user| %>
+                <!-- Latest Course -->
+                <div class="latest d-flex flex-row align-items-start justify-content-start">
+                  <div class="latest_image">
+                    <div><%= gravatar_for user, size: Settings.users.size_page %></div>
+                  </div>
+                  <div class="latest_content">
+                    <div class="latest_title"><a href="course.html"><%= user.name %></a></div>
+                    <div class="latest_price">
+                      <% if user.in_group @group %>
+                        <%= link_to add_member_path(group_member: {group_id: @group.id,
+                                                                   member_id: user.id}), method: :post do %>
+                          <i class="fa fa-user-plus" aria-hidden="true"> add </i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <%= will_paginate @users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

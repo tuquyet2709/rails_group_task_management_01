@@ -2,6 +2,8 @@
  *= require_self
  *= require_tree .
  *= require animate
+ *= require colorbox
+ *= require course_responsive
  *= require main_styles
  *= require owl.carousel
  *= require owl.theme.default
