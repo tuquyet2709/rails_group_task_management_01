@@ -15,6 +15,8 @@ en:
     add_member_error: "Add member error"
     you_are_not_leader: "You are not leader"
     cant_access_group: "You are not allowed to access this group"
+    cant_active: "Can't active leader"
+    active_leader: "Activated Leader"
   static_pages:
     home:
       title: "Home"
@@ -113,7 +115,10 @@ en:
       save_changes: "Save changes"
       update_your_profile: "Update your profile"
       change: "Change"
-
+    delete:
+      delete: "Delete"
+      confirm: "Confirm"
+      active: "Active"
   shared:
     error_messages:
       the_form_contains: "The form contains"

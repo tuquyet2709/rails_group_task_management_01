@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :reports, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
     namespace :admin do
-      resources :users , only: :index
+      resources :users ,only: [:index] do
+        patch  "/active_leader", to: "users#active_leader"
+      end
     end
   end
 end

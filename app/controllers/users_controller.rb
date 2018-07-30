@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = t "flash.user_deleted"
-    redirect_to users_url
+    redirect_to admin_users_path
   end
 
   def following
