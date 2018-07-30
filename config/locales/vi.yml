@@ -1,14 +1,19 @@
 vi:
   flash:
     cant_find_user: "Không thể tìm thấy user"
+    cant_find_group: "Không thể tìm thấy group"
     create_user_successful: "Create user successful!"
+    add_user_successful: "Thêm thành công"
+    add_user_eror: "Thêm lỗi"
     create_user_eror: "Create user erorr!"
     create_group_erorr: "Create group erorr!"
     invalid_message: "Sai email hoặc password"
     user_updated: "Đã update"
     user_deleted: "Đã xoá user"
     log_in: "hãy đăng nhập."
-
+    add_member_error: "lỗi thêm thành viên"
+    you_are_not_leader: "Bạn không phải leader"
+    cant_access_group: "Bạn không được phép truy cập group này"
   static_pages:
     home:
       title: "Trang chủ"
@@ -130,3 +135,12 @@ vi:
     name: "Tên nhóm"
     function: "Chức năng của nhóm"
     description: "Mô tả"
+    search: "Tìm"
+    search_member: "Tìm thành viên"
+    task_list: "Danh sách công việc"
+    main_function: "Chức năng chính"
+    member_list: "Danh sách thành viên"
+    statistic: "Thống kê"
+    member_report: "Quản lý báo cáo"
+    members: "members"
+    subtasks: "subtasks"

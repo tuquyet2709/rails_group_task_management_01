@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
+    post "/search", to: "groups#search"
+    post "/add_member", to: "groups#add_member"
     resources :users do
       member do
         get :following, :followers
