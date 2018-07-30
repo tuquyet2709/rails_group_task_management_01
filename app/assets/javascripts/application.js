@@ -14,4 +14,8 @@
 //= require parallax.min
 //= require custom
 //= require custom.bundle
+//= require courses
+//= require course
+//= require jquery.colorbox-min
+//= require about
 //= require_tree .

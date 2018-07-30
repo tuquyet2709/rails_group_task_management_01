@@ -84,6 +84,7 @@ en:
     account: "Account"
     profile: "profile"
     logout: "logout"
+    control: "User control"
 
   users:
     new:
@@ -148,3 +149,9 @@ en:
     member_report: "Member 's reports"
     members: "thành viên"
     subtasks: "subtasks"
+  index_admin:
+    title: "Control Member"
+    member: "Member"
+    leader: "Leader"
+    leader_wait: "Leader waiting"
+

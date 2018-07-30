@@ -22,29 +22,26 @@ class UsersController < ApplicationController
   end
 
   def show_member
-    @reports = current_user.feed.order_desc.paginate page: params[:page],
-                                              per_page: Settings.users.per_page
+    @reports = current_user.feed
+                           .order_desc.paginate page: params[:page],
+                                        per_page: Settings.users.per_page
     @report = current_user.reports.build
     render "show_member"
   end
 
   def show
-    redirect_to root_url unless @user&.activated
+    redirect_to root_url unless @user && @user.activated
     show_member if @user.member?
-
-    if @user.leader?
-      if current_user != @user
-        redirect_to current_user
-      else
-        @group = Group.new
-        render "show_leader"
-      end
-    end
+    check_leader if @user.leader?
   end
 
-  def index
-    @users = User.paginate page: params[:page],
-                           per_page: Settings.users.per_page
+  def check_leader
+    if (current_user != @user) && !current_user.admin?
+      redirect_to current_user
+    else
+      @group = Group.new
+      render "show_leader"
+    end
   end
 
   def edit; end
@@ -59,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
     flash[:success] = t "flash.user_deleted"
     redirect_to users_url
   end

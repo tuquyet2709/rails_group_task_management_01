@@ -1,0 +1,7 @@
+<%= will_paginate user, param_name: param,:renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+<ul class="users">
+  <% user.each do |u| %>
+    <%= render "users/user", user: u %>
+  <% end %>
+</ul>
+<%= will_paginate user, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
