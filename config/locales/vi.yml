@@ -82,6 +82,7 @@ vi:
     account: "Tài khoản"
     profile: "Hồ sơ"
     logout: "Đăng xuất"
+    control: "Quản lý người dùng"
 
   users:
     new:
@@ -144,3 +145,8 @@ vi:
     member_report: "Quản lý báo cáo"
     members: "members"
     subtasks: "subtasks"
+  index_admin:
+    title: "Quản lý người dùng"
+    member: "Thành Viên"
+    leader: "Leader"
+    leader_wait: "Hàng đợi Leader"

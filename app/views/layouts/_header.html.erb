@@ -42,7 +42,7 @@
             </div>
             <nav class="main_nav_contaner ml-auto">
               <ul class="main_nav">
-                <li class="active"><%= link_to t("static_pages.home.title"), root_path %></li>
+                <li class="active"><%= link_to t("static_pages.home.title"), root_url %></li>
                 <li><%= link_to t("static_pages.about.title"), "#" %></a></li>
                 <% if logged_in? %>
                 <li class="dropdown">
@@ -50,6 +50,9 @@
                     <%= t"profile.account" %> <b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
+                    <% if current_user.admin? %>
+                      <li><%= link_to t("profile.control"), admin_users_path %></li>
+                      <% end %>
                     <li><%= link_to t("profile.profile"), current_user %></li>
                     <li class="divider"></li>
                     <li>

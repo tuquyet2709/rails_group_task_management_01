@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/search", to: "groups#search"
     post "/add_member", to: "groups#add_member"
-    resources :users do
+    resources :users, except: :index do
       member do
         get :following, :followers
       end
@@ -17,5 +17,8 @@ Rails.application.routes.draw do
     resources :groups
     resources :reports, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
+    namespace :admin do
+      resources :users , only: :index
+    end
   end
 end

@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
   def show
     check_leader_or_member params[:id]
     @users = @group.members.paginate page: params[:page],
-      per_page: Settings.users.per_page
+                                     per_page: Settings.users.per_page
   end
 
   def add_member
@@ -36,9 +36,10 @@ class GroupsController < ApplicationController
   end
 
   def search
-    searchName = params[:search][:name]
-    @users = User.search_by_name(searchName).paginate page: params[:page],
-      per_page: Settings.users.per_page
+    search_name = params[:search][:name]
+    @users = User
+             .search_by_name(search_name).paginate page: params[:page],
+                                             per_page: Settings.users.per_page
     @group = Group.find_by id: params[:search][:group]
     render :show
   end
@@ -61,14 +62,15 @@ class GroupsController < ApplicationController
 
   def check_leader_or_member group_id
     return if leader_of_group group_id
-    return unless GroupMember.find_by(group_id: group_id, member_id: current_user.id).blank?
+    return unless GroupMember.find_by(group_id: group_id,
+                                      member_id: current_user.id).blank?
     redirect_to current_user
     flash[:danger] = t "flash.cant_access_group"
   end
 
   def group_params
     params.require(:group).permit :name, :description, :picture,
-                                  :function
+      :function
   end
 
   def find_group

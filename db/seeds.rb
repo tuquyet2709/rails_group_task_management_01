@@ -16,6 +16,17 @@ User.create!(name:  "Duclh",
                activated: true,
                role: 1)
 end
+10.times do |n|
+  name  = Faker::Name.name
+  email = "no_leader-#{n+1}@gmail.com"
+  password = "12345678"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password,
+               activated: false ,
+               role: 1)
+end
 100.times do |n|
   name  = Faker::Name.name
   email = "member-#{n+1}@gmail.com"

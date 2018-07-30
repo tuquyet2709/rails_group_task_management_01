@@ -30,8 +30,9 @@ class User < ApplicationRecord
             length: {minimum: Settings.minimum.length_pass},
             allow_nil: true
 
-  scope :search_by_name,->(name){where("name like ? and role = ?",
-                                       "%#{name}%",User.roles[:member])}
+  scope :search_by_name, (lambda do |name|
+    where("name like ? and role = ?", "%#{name}%", User.roles[:member])
+  end)
 
   class << self
     def digest string
