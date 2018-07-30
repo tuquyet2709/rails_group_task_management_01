@@ -1113,6 +1113,10 @@ section
 	color: #FFFFFF;
 }
 
+subtask_row {
+	margin-top: 45px;
+	overflow: hidden;
+}
 /*********************************
 9. Counter
 *********************************/
@@ -1329,6 +1333,14 @@ section
 	height: 250px;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
+}
+
+.td-subtask-content {
+	width: 1000px;
+}
+
+.td-subtask-status {
+	width: 10px;
 }
 /*********************************
 10. Events
