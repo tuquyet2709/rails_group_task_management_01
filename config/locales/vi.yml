@@ -14,6 +14,8 @@ vi:
     add_member_error: "lỗi thêm thành viên"
     you_are_not_leader: "Bạn không phải leader"
     cant_access_group: "Bạn không được phép truy cập group này"
+    cant_active: "Không thể kích hoạt leader"
+    active_leader: "Đã kích hoạt Leader"
   static_pages:
     home:
       title: "Trang chủ"
@@ -110,6 +112,10 @@ vi:
       save_changes: "Lưu thay đổi"
       update_your_profile: "Chỉnh sửa hồ sơ của bạn"
       change: "Thay đổi"
+    delete:
+      delete: "Xóa"
+      confirm: "Xác Nhận"
+      active: "Kích hoạt"
   shared:
     error_messages:
       the_form_contains: "Bản đăng kí có"

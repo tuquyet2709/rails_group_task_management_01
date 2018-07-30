@@ -9,14 +9,14 @@
 
       <!-- Course Info Item -->
       <div class="course_info_item">
-        <div class="course_info_title"><%= t "index_admin.leader" %></div>
-        <div class="course_info_text"><%= @leader_activated.count %></div>
+        <div class="course_info_title"><%= t "index_admin.member" %></div>
+        <div class="course_info_text"><%= @member.count %></div>
       </div>
 
       <!-- Course Info Item -->
       <div class="course_info_item">
-        <div class="course_info_title"><%= t "index_admin.member" %></div>
-        <div class="course_info_text"><%= @member.count %></div>
+        <div class="course_info_title"><%= t "index_admin.leader" %></div>
+        <div class="course_info_text"><%= @leader_activated.count %></div>
       </div>
 
       <!-- Course Info Item -->
@@ -30,21 +30,20 @@
     <!-- Course Tabs -->
     <div class="course_tabs_container">
       <div class="tabs d-flex flex-row align-items-center justify-content-start">
-        <div class="tab active tab_fix_width"><%= t "index_admin.leader" %></div>
-        <div class="tab tab_fix_width"><%= t "index_admin.member" %></div>
+        <div class="tab active tab_fix_width"><%= t "index_admin.member" %></div>
+        <div class="tab tab_fix_width"><%= t "index_admin.leader" %></div>
         <div class="tab tab_fix_width"><%= t "index_admin.leader_wait" %></div>
       </div>
       <div class="tab_panels">
 
         <!-- first -->
-        <div class="tab_panel active" , id="leader">
-          <%= render "users/list_user_index", user: @leader_activated, param: "leader_page" %>
+        <div class="tab_panel active" , id="member">
+          <%= render "users/list_user_index", user: @member , param: "member_page" %>
         </div>
 
-        <!-- 2 -->
-        <div class="tab_panel tab_panel_2" , id="member">
-          <%= render "users/list_user_index", user: @member, param: "member_page" %>
-
+        <!--        <!-- 2 -->
+        <div class="tab_panel tab_panel_2" , id="leader">
+          <%= render "users/list_user_index", user: @leader_activated, param: "leader_page" %>
         </div>
 
         <!-- 3 -->

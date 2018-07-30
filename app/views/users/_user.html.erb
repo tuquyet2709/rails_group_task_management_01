@@ -2,7 +2,11 @@
   <%= gravatar_for user, size: Settings.users.size_page %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to t("users.index.delete"), user, method: :delete,
-                  data: {confirm: t("users.index.confirm")} %>
+    | <%= link_to t("users.delete.delete"), user, method: :delete,
+                  data: {confirm: t("users.delete.confirm")} %>
+    <% if !user.activated? %>
+      | <%= link_to t("users.delete.active"), admin_user_active_leader_path(user_id: user.id), method: :patch,
+                  data: {confirm: t("users.delete.confirm")} %>
+    <% end %>
   <% end %>
 </li>

@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :find_user, only: [:active_leader]
+
   def index
     if current_user.admin?
       member
@@ -7,6 +9,22 @@ class Admin::UsersController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def active_leader
+    if @user.update_attributes activated: true
+      flash[:success] = t "flash.user_updated"
+    else
+      flash[:danger] = t "flash.cant_active"
+    end
+    redirect_to admin_users_path
+  end
+
+  def find_user
+    @user = User.find params[:user_id]
+    return if @user
+    redirect_to root_path
+    flash[:danger] = t "flash.cant_find_user"
   end
 
   private
