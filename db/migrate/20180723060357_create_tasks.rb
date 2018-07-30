@@ -9,6 +9,5 @@ class CreateTasks < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :tasks, :member_id
   end
 end

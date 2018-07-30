@@ -22,6 +22,8 @@ class GroupsController < ApplicationController
     check_leader_or_member params[:id]
     @users = @group.members.paginate page: params[:page],
                                      per_page: Settings.users.per_page
+    @task = Task.new
+    @task.subtasks.build
   end
 
   def add_member
