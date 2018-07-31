@@ -19,6 +19,8 @@ en:
     cant_access_group: "You are not allowed to access this group"
     cant_active: "Can't active leader"
     active_leader: "Activated Leader"
+    cant_find_task: "Can't find task"
+    not_true_group: "Not true group"
   static_pages:
     home:
       title: "Home"
@@ -82,6 +84,7 @@ en:
       email_address: "Email address"
       password: "Password"
       forgot_password: "Forgot the password?"
+      or: "Or"
 
   profile:
     account: "Account"
@@ -123,6 +126,7 @@ en:
     error_messages:
       the_form_contains: "The form contains"
       error: "error"
+
   report:
     create: "Report created!"
     delete: "delete"
@@ -136,11 +140,13 @@ en:
     ago: "ago."
     write_new: "Write new report"
     friend: "Friend Report"
+
   follow:
     submit_follow: "Follow"
     submit_unfollow: "Unfollow"
     following: "Following"
     follower: "Follower"
+
   group:
     name: "Group name"
     function: "Function"
@@ -166,3 +172,15 @@ en:
     deadline: "Deadline"
     submit: "submit"
     add_subtask: "add subtask"
+
+  groups:
+    show:
+      title: "Group"
+
+  tasks:
+    show:
+      title: "Task"
+      subtask_list: "Subtask list"
+      subtask_name: "Subtask name"
+      status: "Status"
+      change: "Change"

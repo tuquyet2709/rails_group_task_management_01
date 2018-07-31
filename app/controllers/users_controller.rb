@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     redirect_to root_url unless @user && @user.activated
     show_member if @user.member?
     check_leader if @user.leader?
+    show_admin if @user.admin?
+  end
+
+  def show_admin
+    if (current_user != @user) && !current_user.admin?
+      redirect_to current_user
+    else
+      render "show_admin"
+    end
   end
 
   def check_leader

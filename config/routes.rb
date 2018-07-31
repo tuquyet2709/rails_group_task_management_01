@@ -9,12 +9,16 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/search", to: "groups#search"
     post "/add_member", to: "groups#add_member"
+    post "/change_subtask", to: "tasks#change_subtask"
     resources :users, except: :index do
       member do
         get :following, :followers
       end
     end
-    resources :groups
+    resources :groups do
+      resources :tasks do
+      end
+    end
     resources :reports, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
     namespace :admin do

@@ -1,0 +1,70 @@
+<% provide :title, t(".title") %>
+<div class="courses">
+  <div class="container">
+    <div class="row">
+
+      <!-- Courses Main Content -->
+      <div class="col-lg-8">
+        <center>
+          <div class="sidebar_section_title"><%= "Task name : #{@task.content}" %></div>
+          <br>
+        </center>
+        <center>
+          <div class="sidebar_section_title"><%= t ".subtask_list" %></div>
+        </center>
+        <br>
+
+        <!-- Subtask list -->
+        <div class="d-flex flex-column align-items-end">
+
+          <table class="table table-bordered table-responsive-lg">
+            <thead>
+            <tr>
+              <th scope="col"><%= t ".subtask_name" %></th>
+              <th scope="col"><%= t ".status" %></th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @task.subtasks.each do |subtask| %>
+              <tr>
+                <td class="td-subtask-content"><%= subtask.content %></td>
+                <td class="td-subtask-status">
+                  <% if subtask.done? %>
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                  <% end %>
+                </td>
+                <td class="td-subtask-status">
+                  <%= link_to change_subtask_path(subtask: {subtask_id: subtask.id, group_id: @task.group_id}), method: :post do %>
+                    <button class="courses_search_button ml-auto"><%= t ".change" %></button>
+                    <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <!-- Subtask list -->
+
+      </div>
+      <!-- Courses Sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- Categories -->
+          <div class="sidebar_section">
+            <div class="sidebar_section_title"><%= t "group.main_function" %></div>
+            <div class="sidebar_categories">
+              <ul>
+                <li><%= link_to t("group.task_list"), "#" %></li>
+                <li><%= link_to t("group.member_list"), "#" %></li>
+                <li><%= link_to t("group.member_report"), "#" %></li>
+                <li><%= link_to t("group.statistic"), "#" %></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Latest Course -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

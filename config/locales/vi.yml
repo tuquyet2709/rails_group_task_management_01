@@ -8,17 +8,19 @@ vi:
     create_user_eror: "Create user erorr!"
     add_user_eror: "Thêm lỗi"
     add_task_error: "Thêm lỗi"
-    create_user_eror: "Create user erorr!"
     create_group_erorr: "Create group erorr!"
     invalid_message: "Sai email hoặc password"
     user_updated: "Đã update"
     user_deleted: "Đã xoá user"
     log_in: "hãy đăng nhập."
+    destroy_report: "Đã xoá report"
     add_member_error: "lỗi thêm thành viên"
     you_are_not_leader: "Bạn không phải leader"
     cant_access_group: "Bạn không được phép truy cập group này"
     cant_active: "Không thể kích hoạt leader"
     active_leader: "Đã kích hoạt Leader"
+    cant_find_task: "Không tìm thấy task"
+    not_true_group: "Sai group"
   static_pages:
     home:
       title: "Trang chủ"
@@ -73,6 +75,7 @@ vi:
       contact: "Liên Hệ"
     about:
       title: "Giới thiệu"
+
   sessions:
     new:
       login: "Đăng nhập"
@@ -82,6 +85,7 @@ vi:
       email_address: "Địa chỉ email"
       password: "Mật khẩu"
       forgot_password: "Quên mật khẩu"
+      or: "Hoặc"
 
   profile:
     account: "Tài khoản"
@@ -119,10 +123,12 @@ vi:
       delete: "Xóa"
       confirm: "Xác Nhận"
       active: "Kích hoạt"
+
   shared:
     error_messages:
       the_form_contains: "Bản đăng kí có"
       error: "lỗi"
+
   report:
     create: "Đã tạo report!"
     delete: "Xóa"
@@ -136,12 +142,14 @@ vi:
     ago: "trước."
     write_new: "Viết report mới"
     friend: "Report của bạn bè"
+
   follow:
     submit_follow: "Theo Dõi"
     submit_unfollow: "Bỏ Theo Dõi"
     following: "Đang Theo Dõi"
     follower: "Theo dõi"
-  group:
+
+  groups:
     name: "Tên nhóm"
     function: "Chức năng của nhóm"
     description: "Mô tả"
@@ -166,3 +174,13 @@ vi:
     deadline: "Thời hạn"
     submit: "xác nhận"
     add_subtask: "thêm subtask"
+    show:
+      title: "Nhóm"
+
+  tasks:
+    show:
+      title: "Task"
+      subtask_list: "Danh sách subtask"
+      subtask_name: "Tên subtask"
+      status: "Trạng thái"
+      change: "Thay đổi"

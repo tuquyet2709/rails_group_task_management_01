@@ -1,3 +1,4 @@
+<% provide :title, t(".title") %>
 <div class="courses">
   <div class="container">
     <div class="row">
@@ -14,7 +15,7 @@
                 <div class="course">
                   <div class="course_image"><img src="assets/images/group_1.jpg" alt=""></div>
                   <div class="course_body">
-                    <h3 class="course_title"><a href="course.html"><%= task.content %></a></h3>
+                    <h3 class="course_title"><%= link_to task.content, group_task_path(@group.id, task.id) %></h3>
                     <div class="course_teacher">Mr. <%= task.group.leader.name %></div>
                     <div class="course_text">
                       <p></p>
@@ -28,7 +29,7 @@
                       </div>
                       <div class="course_info">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        <span><%= t "group.subtasks" %></span>
+                        <span><%= t ".subtasks" %></span>
                       </div>
                     </div>
                   </div>
@@ -49,7 +50,7 @@
                 <% if current_user.leader? %>
                   <li>
                     <%= link_to t("group.create_task"), "#", "data-toggle": "modal",
-                      "data-target": "#squarespaceModal" %>
+                                "data-target": "#squarespaceModal" %>
                   </li>
                 <% end %>
                 <li><%= link_to t("group.task_list"), "#" %></li>
@@ -101,7 +102,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"></span></button>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span><span class="sr-only"></span></button>
         <h3 class="modal-title" id="lineModalLabel">
           <%= t "users.show.create_group" %>
         </h3>
@@ -127,20 +129,20 @@
           </div>
           <hr>
           <div id="child_fields">
-          <li id="add-date">
-            <%= link_to t("task.add_subtask"), "#", id: "addbut", format: :js %>
-          </li>
-          <%= f.fields_for :subtasks do |builder| %>
-            <li>
-              <%= render "subtask", ff: builder %>
+            <li id="add-date">
+              <%= link_to t("task.add_subtask"), "#", id: "addbut", format: :js %>
             </li>
-          <% end %>
-          <%= f.submit t("task.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+            <%= f.fields_for :subtasks do |builder| %>
+              <li>
+                <%= render "subtask", ff: builder %>
+              </li>
+            <% end %>
+            <%= f.submit t("task.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
-      </div>
-      <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
+        </div>
       </div>
     </div>
   </div>
 </div>
-
