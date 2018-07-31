@@ -1,30 +1,50 @@
-<% provide :title, t("task.show.title") %>
 <div class="courses">
   <div class="container">
     <div class="row">
       <!-- Courses Main Content -->
       <div class="col-lg-8">
         <center>
-          <div class="sidebar_section_title"><%= t "groups.task_list" %></div>
+          <div class="sidebar_section_title"><%= t "tasks.progress" %></div>
         </center>
         <div class="courses_container">
           <div class="row courses_row">
-            <% if current_user.leader? %>
-              <% listTask = @group.tasks.order("group_task_id ASC") %>
-              <% i =  listTask.blank? ? 1 : (listTask.first.group_task_id) - 1  %>
-              <% listTask.each do |task| %>
-                <% unless i == task.group_task_id %>
-                  <% i = task.group_task_id %>
-                  <%= render "tasks/task", task: task %>
-                <% end %>
-              <% end %>
-            <% else %>
-              <% current_user.tasks.where(group_id: @group.id).each do |task| %>
-                  <%= render "tasks/task", task: task %>
-              <% end %>
-            <% end %>
+              <!-- Course -->
+              <div class="col-lg-6 course_col">
+              </div>
           </div>
         </div>
+
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th><%= t "tasks.member" %></th>
+              <th><%= t "tasks.completed" %></th>
+              <th><%= t "tasks.not_completed" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @task_statistic.each do |task2| %>
+            <tr>
+              <td><%= task2.user.name %></td>
+              <td>
+                <% task2.subtasks.each do |sub| %>
+                  <% if sub.done? %>
+                    [<%= sub.content %>]
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% task2.subtasks.each do |sub| %>
+                  <% unless sub.done%>
+                    [<%= sub.content %>]
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
       </div>
       <!-- Courses Sidebar -->
       <div class="col-lg-4">
@@ -37,7 +57,7 @@
                 <% if current_user.leader? %>
                   <li>
                     <%= link_to t("groups.create_task"), "#", "data-toggle": "modal",
-                                "data-target": "#squarespaceModal" %>
+                      "data-target": "#squarespaceModal" %>
                   </li>
                 <% end %>
                 <li><%= link_to t("groups.task_list"), "#" %></li>
@@ -89,8 +109,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">×</span><span class="sr-only"></span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"></span></button>
         <h3 class="modal-title" id="lineModalLabel">
           <%= t "users.show.create_group" %>
         </h3>
@@ -99,7 +118,7 @@
         <%= form_for @task do |f| %>
           <%= f.hidden_field :group_id, value: @group.id %>
           <div class="form-group">
-            <label for="exampleInputEmail1"><%= t "task.title" %></label>
+            <label for="exampleInputEmail1"><%= t "tasks.title" %></label>
             <%= f.text_field :title, class: "form-control", placeholder: t("groups.name") %>
           </div>
           <div class="form-group">
@@ -107,7 +126,7 @@
             <%= f.text_field :content, class: "form-control", placeholder: t("groups.description") %>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1"><%= t "task.deadline" %></label>
+            <label for="exampleInputPassword1"><%= t "tasks.deadline" %></label>
             <br>
             <center>
               <%= f.date_field :start_date %> -
@@ -116,20 +135,20 @@
           </div>
           <hr>
           <div id="child_fields">
-            <li id="add-date">
-              <%= link_to t("task.add_subtask"), "#", id: "addbut", format: :js %>
+          <li id="add-date">
+            <%= link_to t("tasks.add_subtask"), "#", id: "addbut", format: :js %>
+          </li>
+          <%= f.fields_for :subtasks do |builder| %>
+            <li>
+              <%= render "groups/subtask", ff: builder %>
             </li>
-            <%= f.fields_for :subtasks do |builder| %>
-              <li>
-                <%= render "subtask", ff: builder %>
-              </li>
-            <% end %>
-            <%= f.submit t("task.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
+          <% end %>
+          <%= f.submit t("tasks.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
-        </div>
-        <div class="modal-footer">
-        </div>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>
 </div>
+
