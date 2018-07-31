@@ -21,6 +21,7 @@ vi:
     active_leader: "Đã kích hoạt Leader"
     cant_find_task: "Không tìm thấy task"
     not_true_group: "Sai group"
+    member_null: "group chưa có thành viên"
   static_pages:
     home:
       title: "Trang chủ"
@@ -163,7 +164,6 @@ vi:
     member_report: "Quản lý báo cáo"
     members: "members"
     subtasks: "subtasks"
-  index_admin:
     title: "Quản lý người dùng"
     member: "Thành Viên"
     leader: "Leader"
@@ -184,3 +184,8 @@ vi:
       subtask_name: "Tên subtask"
       status: "Trạng thái"
       change: "Thay đổi"
+    subtasks: "Subtasks"
+    not_completed: "chưa hoàn thành"
+    completed: "hoàn thành"
+    member: "thành viên"
+    progress: "tiến độ công việc"

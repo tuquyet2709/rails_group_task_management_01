@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       end
     end
     resources :groups do
-      resources :tasks do
-      end
+      resources :tasks
+      get "statistic", to: "tasks#statistic"
     end
     resources :reports, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]

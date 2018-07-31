@@ -21,6 +21,7 @@ en:
     active_leader: "Activated Leader"
     cant_find_task: "Can't find task"
     not_true_group: "Not true group"
+    member_null: "there arent any member"
   static_pages:
     home:
       title: "Home"
@@ -184,3 +185,8 @@ en:
       subtask_name: "Subtask name"
       status: "Status"
       change: "Change"
+    subtasks: "Subtasks"
+    not_completed: "Not completed"
+    completed: "Completed"
+    member: "Member"
+    progress: "Task progress"

@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :group
+  belongs_to :user, foreign_key: "member_id"
   has_many :subtasks, dependent: :destroy
   accepts_nested_attributes_for :subtasks,
     allow_destroy: true, reject_if: proc{|att| att["content"].blank?}

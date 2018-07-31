@@ -1,0 +1,30 @@
+<div class="col-lg-6 course_col">
+  <div class="course">
+    <div class="course_image"><img src="assets/images/group_1.jpg" alt=""></div>
+    <div class="course_body">
+      <h3 class="course_title">
+        <% if current_user.leader? %>
+          <%= link_to task.title, group_statistic_path(@group, id: task.group_task_id) %>
+        <% else %>
+          <%= link_to task.title, group_task_path(@group.id, task.id) %>
+        <% end %>
+      </h3>
+      <div class="course_teacher">Mr. <%= task.group.leader.name %></div>
+      <div class="course_text">
+        <p></p>
+      </div>
+    </div>
+    <div class="course_footer">
+      <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+        <div class="course_info">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <span><%= t "groups.members" %></span>
+        </div>
+        <div class="course_info">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <span><%= t "groups.subtasks" %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
