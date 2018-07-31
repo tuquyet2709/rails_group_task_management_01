@@ -22,5 +22,6 @@ Rails.application.routes.draw do
         patch  "/active_leader", to: "users#active_leader"
       end
     end
+    resources :tasks
   end
 end

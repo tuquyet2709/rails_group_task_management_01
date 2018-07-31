@@ -1,7 +1,8 @@
 class Subtask < ApplicationRecord
-  belongs_to :task
+  belongs_to :task, optional: true
 
-  validate :task_id, presence: true
-  validate :content, presence: true
-  validate :done, presence: true
+  validates :content, presence: true
+  validates :done, presence: true
+
+  enum statuses: {not_started: 1, completed: 2}
 end

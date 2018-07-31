@@ -4,8 +4,10 @@ en:
     cant_find_group: "Can't find group"
     create_user_successful: "Create user successful!"
     add_user_successful: "Add user successful!"
+    add_task_successful: "Add task successful!"
     create_user_eror: "Create user erorr!"
     add_user_eror: "Add user erorr!"
+    add_task_error: "Add task failure!"
     create_group_eror: "Create group erorr!"
     invalid_message: "Invalid email/password combination"
     user_updated: "Profile updated"
@@ -71,7 +73,6 @@ en:
       contact: "Contact Us"
     about:
       title: "About"
-
   sessions:
     new:
       login: "Login"
@@ -104,7 +105,6 @@ en:
       member: "member"
       leader: "leader"
       create_my_account: "Create My Account"
-
     show:
       following: "Following"
       follower: "Follower"
@@ -128,6 +128,7 @@ en:
     delete: "delete"
     sure: "You sure?"
     title: "Report"
+    destroy: "deleted Report"
     content_demo: "Compose new report..."
     post: "Post"
     by: "By"
@@ -159,4 +160,9 @@ en:
     member: "Member"
     leader: "Leader"
     leader_wait: "Leader waiting"
-
+    create_task: "Create new task"
+  task:
+    title: "Task title"
+    deadline: "Deadline"
+    submit: "submit"
+    add_subtask: "add subtask"
