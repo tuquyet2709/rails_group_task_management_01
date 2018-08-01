@@ -29,6 +29,13 @@ class TasksController < ApplicationController
     redirect_to group_path(@group.id)
   end
 
+  def destroy
+    @tasks = Task.where group_task_id: @task.group_task_id
+    @tasks.each(&:destroy)
+    flash[:info] = t "flash.deleted"
+    redirect_to request.referrer || root_url
+  end
+
   def task_save
     if @task.save
       flash[:info] = t "flash.add_task_successful"

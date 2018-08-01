@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/search", to: "groups#search"
     post "/add_member", to: "groups#add_member"
+    delete "/remove_member", to: "groups#remove_member"
     post "/change_subtask", to: "tasks#change_subtask"
     resources :users, except: :index do
       member do

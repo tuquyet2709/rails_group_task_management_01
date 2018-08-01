@@ -22,6 +22,7 @@ en:
     cant_find_task: "Can't find task"
     not_true_group: "Not true group"
     member_null: "there arent any member"
+    deleted: "Deleted"
   static_pages:
     home:
       title: "Home"
@@ -150,7 +151,8 @@ en:
     following: "Following"
     follower: "Follower"
 
-  group:
+  groups:
+    group: "group"
     name: "Group name"
     function: "Function"
     description: "Description"
@@ -164,6 +166,8 @@ en:
     member_report: "Member 's reports"
     members: "thành viên"
     subtasks: "subtasks"
+    show:
+      title: "Group"
   index_admin:
     title: "Control Member"
     member: "Member"
@@ -175,10 +179,6 @@ en:
     deadline: "Deadline"
     submit: "submit"
     add_subtask: "add subtask"
-
-  groups:
-    show:
-      title: "Group"
 
   tasks:
     show:
@@ -192,3 +192,7 @@ en:
     completed: "Completed"
     member: "Member"
     progress: "Task progress"
+    created_by: "Created by: "
+    start_date: "Start date: "
+    end_date: "End date: "
+    start_cant_later_than_end: "start date cant be later than end date"

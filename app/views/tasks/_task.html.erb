@@ -1,6 +1,6 @@
 <div class="col-lg-6 course_col">
   <div class="course">
-    <div class="course_image"><img src="assets/images/group_1.jpg" alt=""></div>
+    <div class="course_image"><img src="https://lh3.googleusercontent.com/a8_ujXr3VWHstGkxgJL1TkqfrytP4r_52QhcvqRQVaQPRQ9DHdQ6seI99qc4jLjC0WDM=h900" alt=""></div>
     <div class="course_body">
       <h3 class="course_title">
         <% if current_user.leader? %>
@@ -9,21 +9,22 @@
           <%= link_to task.title, group_task_path(@group.id, task.id) %>
         <% end %>
       </h3>
-      <div class="course_teacher">Mr. <%= task.group.leader.name %></div>
-      <div class="course_text">
-        <p></p>
-      </div>
-    </div>
-    <div class="course_footer">
-      <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-        <div class="course_info">
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-          <span><%= t "groups.members" %></span>
-        </div>
-        <div class="course_info">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <span><%= t "groups.subtasks" %></span>
-        </div>
+      <div class="course_teacher">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <%= t "tasks.created_by" %><%= task.group.leader.name %><br>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <%= t "groups.description" %> :
+        <%= task.content[0..Settings.task_content] %>
+        <%= "..." if task.content.length > Settings.task_content %>
+        <br><i class="fa fa-calendar" aria-hidden="true"></i>
+        <%= t "tasks.start_date" %><%= task.start_date %>
+        <br><i class="fa fa-calendar" aria-hidden="true"></i>
+        <%= t "tasks.end_date" %><%= task.end_date %>
+        <br>
+        <%= link_to group_task_path(@group.id, task.id), method: :delete,
+          data: {confirm: t("users.delete.confirm")} do %>
+          <i class="fa fa-times" aria-hidden="true"> <%= t "users.delete.delete" %></i>
+        <% end %>
       </div>
     </div>
   </div>

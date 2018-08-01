@@ -22,6 +22,7 @@ vi:
     cant_find_task: "Không tìm thấy task"
     not_true_group: "Sai group"
     member_null: "group chưa có thành viên"
+    deleted: "Đã xóa"
   static_pages:
     home:
       title: "Trang chủ"
@@ -151,6 +152,7 @@ vi:
     follower: "Theo dõi"
 
   groups:
+    group: "nhóm"
     name: "Tên nhóm"
     function: "Chức năng của nhóm"
     description: "Mô tả"
@@ -189,3 +191,7 @@ vi:
     completed: "hoàn thành"
     member: "thành viên"
     progress: "tiến độ công việc"
+    created_by: "Tạo bởi: "
+    start_date: "ngày bắt đầu: "
+    end_date: "ngày kết thúc: "
+    start_cant_later_than_end: "ngày bắt đầu không thể muộn hơn ngày kết thúc"
