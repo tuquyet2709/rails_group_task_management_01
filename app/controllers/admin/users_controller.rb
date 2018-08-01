@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
 
   def active_leader
     if @user.update_attributes activated: true
-      flash[:success] = t "flash.user_updated"
+      flash[:success] = t "flash.active_leader"
     else
       flash[:danger] = t "flash.cant_active"
     end

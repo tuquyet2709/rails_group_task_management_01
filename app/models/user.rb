@@ -72,6 +72,10 @@ class User < ApplicationRecord
     following.delete other_user
   end
 
+  def followers? other_user
+    followers.include? other_user
+  end
+
   def following? other_user
     following.include? other_user
   end

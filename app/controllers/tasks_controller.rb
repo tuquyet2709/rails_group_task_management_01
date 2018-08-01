@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_task, :check_task_in_group,
-                only: [:edit, :update, :show, :destroy]
+    only: [:edit, :update, :show, :destroy]
   before_action only: [:create] do
     check_leader_group params[:task][:group_id]
     find_group params[:task][:group_id]

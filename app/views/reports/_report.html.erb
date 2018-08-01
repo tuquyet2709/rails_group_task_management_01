@@ -15,10 +15,10 @@
           </li>
           <li> |</li>
           <li><span>
-    <% if current_user?(report.user) %>
-                  <%= link_to t("report.delete"), report, method: :delete,
+            <% if current_user?(report.user) %>
+              <%= link_to t("report.delete"), report, method: :delete,
                               data: {confirm: t("report.sure")} %>
-    <% end %>
+            <% end %>
          </span></li>
         </ul>
       </div>
