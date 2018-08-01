@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180731064047) do
+ActiveRecord::Schema.define(version: 20180801055721) do
 
   create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "member_id"
@@ -44,13 +44,15 @@ ActiveRecord::Schema.define(version: 20180731064047) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "task_content"
+    t.string "subtask_content"
     t.index ["member_id"], name: "index_reports_on_member_id"
   end
 
   create_table "subtasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "task_id"
     t.string "content"
-    t.integer "done"
+    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180731064047) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.integer "group_task_id"
+    t.index ["member_id"], name: "index_tasks_on_member_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

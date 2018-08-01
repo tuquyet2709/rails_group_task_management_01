@@ -136,11 +136,13 @@ en:
     destroy: "deleted Report"
     content_demo: "Compose new report..."
     post: "Post"
-    by: "By"
+    by: "by"
     Posted: "Posted"
-    ago: "ago."
+    ago: "ago"
     write_new: "Write new report"
     friend: "Friend Report"
+    task: "Task"
+    subtask: "Subtask"
 
   follow:
     submit_follow: "Follow"
