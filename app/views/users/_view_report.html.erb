@@ -1,0 +1,7 @@
+<% if @user.followers? current_user %>
+  <h3><%= t "report.friend" %> </h3>
+  <ol class="reports">
+    <%= render @report_ano %>
+  </ol>
+  <%= will_paginate @report_ano, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+<% end %>

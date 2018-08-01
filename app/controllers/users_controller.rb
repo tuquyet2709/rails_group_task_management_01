@@ -22,11 +22,20 @@ class UsersController < ApplicationController
   end
 
   def show_member
+    if current_user? @user
+      find_report
+    else
+      @report_ano = @user.reports.order_desc.paginate page: params[:page],
+                                           per_page: Settings.users.per_page
+    end
+    render "show_member"
+  end
+
+  def find_report
     @reports = current_user.feed
                            .order_desc.paginate page: params[:page],
                                         per_page: Settings.users.per_page
     @report = current_user.reports.build
-    render "show_member"
   end
 
   def show
