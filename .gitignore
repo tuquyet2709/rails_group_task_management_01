@@ -49,7 +49,7 @@ node_modules/
 /config/master.keys
 /config/credentials.yml.enc
 /config/database.yml
-/config/secrets.yml
+#/config/secrets.yml
 config/initializers/secret_token.rb
 /test
 config/settings.local.yml

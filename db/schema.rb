@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20180802022423) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.integer "group_task_id"
-    t.index ["member_id"], name: "index_tasks_on_member_id"
     t.datetime "remain_time"
   end
 
