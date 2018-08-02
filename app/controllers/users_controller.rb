@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def show_member
     @tasks = Task.where(member_id: current_user.id)
-    @subtask = @tasks.collect(&:subtasks).flatten
+    @subtask = @tasks.map(&:subtasks).flatten
     if current_user? @user
       find_report
     else

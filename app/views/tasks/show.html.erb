@@ -28,13 +28,11 @@
             <% @task.subtasks.each do |subtask| %>
               <tr>
                 <td class="td-subtask-content"><%= subtask.content %></td>
-                <td class="td-subtask-status">
-                  <% if subtask.done? %>
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                  <% end %>
+                <td class="td-subtask-status" id="subtask-<%= subtask.id %>">
+                  <%= render "subtask_status", subtask: subtask %>
                 </td>
                 <td class="td-subtask-status">
-                  <%= link_to change_subtask_path(subtask: {subtask_id: subtask.id, group_id: @task.group_id}), method: :post do %>
+                  <%= link_to change_subtask_path(subtask: {subtask_id: subtask.id, group_id: @task.group_id}), method: :post, remote: true do %>
                     <button class="courses_search_button ml-auto"><%= t ".change" %></button>
                     <% end %>
                 </td>

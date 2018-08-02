@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     group_taskid = generate_group_task_id
     @group.members.each do |member|
       @task = Task.new task_params.merge(member_id: member.id,
-        group_task_id: group_taskid)
+                                         group_task_id: group_taskid)
       @task.subtasks.each do |subtask|
         subtask.done = Subtask.statuses[:not_started]
       end
@@ -48,7 +48,10 @@ class TasksController < ApplicationController
   def change_subtask
     @subtask = Subtask.find_by id: params[:subtask][:subtask_id]
     @subtask.update_attribute :done, !@subtask.done?
-    redirect_to group_task_path(params[:subtask][:group_id], @subtask.task_id)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   private
