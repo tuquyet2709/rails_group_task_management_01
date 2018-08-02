@@ -821,7 +821,7 @@ section
 .home_search_form div
 {
 	width: calc(100% - 140px);
-	height: 46px;
+	height: 45px;
 	background: #FFFFFF;
 	border-radius: 3px;
 }
@@ -936,6 +936,17 @@ section
 .home_slider_nav:hover
 {
 	background: #14bdee;
+}
+
+.select-left {
+	float: left;
+	margin-left: 10px;
+	margin-right: 40px;
+}
+.select-right {
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 /*********************************

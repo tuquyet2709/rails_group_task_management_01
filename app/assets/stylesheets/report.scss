@@ -43,7 +43,7 @@ $gray-2: #e8e8e8;
 }
 
 .submit_report {
-  height: 40px !important;
+  height: 50px !important;
   width: 60px !important;
 }
 
@@ -54,7 +54,6 @@ $gray-2: #e8e8e8;
 
 .control_report_submit {
   float: right;
-  margin-right: -5%;
 }
 
 .control_content_report {
@@ -66,7 +65,7 @@ $gray-2: #e8e8e8;
 }
 
 .context_report {
-  font-weight: bold;
+  font-size: large;
 }
 
 .fix_report {
@@ -78,4 +77,26 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.report-footer{
+  margin-top: 5px;
+}
+
+.report-by {
+  float: left;
+}
+
+.delete-report {
+  float: right;
+}
+
+.border-outline {
+  border-style: groove;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.subtask-style {
+  font-style: italic;
 }

@@ -138,9 +138,9 @@ vi:
     title: "Report"
     content_demo: "Viết mới report..."
     post: "Đăng"
-    by: "Bởi"
+    by: "bởi"
     Posted: "Đã đăng tải"
-    ago: "trước."
+    ago: "trước"
     write_new: "Viết report mới"
     friend: "Report của bạn bè"
 
