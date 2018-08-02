@@ -22,8 +22,9 @@ class TasksController < ApplicationController
       @task = Task.new task_params.merge(member_id: member.id,
                                          group_task_id: group_taskid)
       @task.subtasks.each do |subtask|
-        subtask.done = Subtask.statuses[:not_started]
+        subtask.done = 0
       end
+      @task.remain_time = @task.end_date - 12.hours
       task_save
     end
     redirect_to group_path(@group.id)
@@ -39,6 +40,9 @@ class TasksController < ApplicationController
   def task_save
     if @task.save
       flash[:info] = t "flash.add_task_successful"
+      @group.members.each do |member|
+        member.sent_mail_deadline @task
+      end
     else
       flash[:danger] = t "flash.add_task_error"
     end

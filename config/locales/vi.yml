@@ -195,3 +195,7 @@ vi:
     start_date: "ngày bắt đầu: "
     end_date: "ngày kết thúc: "
     start_cant_later_than_end: "ngày bắt đầu không thể muộn hơn ngày kết thúc"
+  mail:
+    subject: "Deadline về "
+    warning: "Cảnh báo Deadline cho "
+    warning_in: " lúc "
