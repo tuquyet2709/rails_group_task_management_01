@@ -1,5 +1,9 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:show, :seach]
+  before_action :find_group_member, only: [:remove_member]
+  before_action :find_group, only: [:show, :seach, :destroy]
+  before_action only: [:destroy] do
+    check_leader_group params[:id]
+  end
   before_action only: [:add_member] do
     check_leader_group params[:group_member][:group_id]
   end
@@ -37,16 +41,38 @@ class GroupsController < ApplicationController
     redirect_to group
   end
 
+  def remove_member
+    @group_member.destroy
+    flash[:info] = t "flash.deleted"
+    redirect_to request.referrer || root_url
+  end
+
+  def destroy
+    @group.destroy
+    flash[:info] = t "flash.deleted"
+    redirect_to request.referrer || root_url
+  end
+
   def search
     search_name = params[:search][:name]
     @users = User
              .search_by_name(search_name).paginate page: params[:page],
                                              per_page: Settings.users.per_page
     @group = Group.find_by id: params[:search][:group]
+    @task = Task.new
     render :show
   end
 
   private
+
+  def find_group_member
+    @group_member = GroupMember
+                    .find_by group_id: params[:group_member][:group_id],
+      member_id: params[:group_member][:member_id]
+    return if @group_member
+    flash[:danger] = t "flash.cant_find_user"
+    redirect_to request.referrer || root_url
+  end
 
   def group_member_params
     params.require(:group_member).permit :member_id, :group_id
