@@ -196,3 +196,8 @@ en:
     start_date: "Start date: "
     end_date: "End date: "
     start_cant_later_than_end: "start date cant be later than end date"
+
+  mail:
+    subject: "Deadline about "
+    warning: "Deadline warning for "
+    warning_in: " at "

@@ -80,6 +80,10 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
+  def sent_mail_deadline task
+    UserMailer.active_task(self, task).deliver_later! until: task.remain_time
+  end
+
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :member_id"
