@@ -1,0 +1,54 @@
+<% provide :title, t(".title") %>
+  <div class="col-lg-9 col-md-6 team_col groups-show-all-center">
+    <div class="team_item">
+      <div>
+        <section id="team" class="pb-5">
+          <div class="container">
+            <center><h5><%= t ".your_group" %></h5></center>
+            <hr>
+            <div class="row">
+              <% @current_groups.each do |group| %>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="image-flip">
+                    <div class="mainflip">
+                      <div class="frontside">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <p>
+                              <%= image_tag group.picture.url, class: "img-fluid" %>
+                            </p>
+                            <h4 class="card-title"><%= group.name %></h4>
+                            <p class="card-text"><%= group.description %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="backside">
+                        <div class="card">
+                          <div class="card-body text-center mt-4">
+                            <h4 class="card-title"><%= group.name %></h4>
+                            <p class="card-text"><%= group.description %></p>
+                            <ul class="list-inline">
+                              <li class="list-inline-item">
+                                <%= link_to "http://facebook.com" do %>
+                                  <i class="fa fa-facebook"></i>
+                                <% end %>
+                              </li>
+                              <li class="list-inline-item">
+                                <%= link_to group do %>
+                                  <i class="fa fa-hand-o-up"></i>
+                                <% end %>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

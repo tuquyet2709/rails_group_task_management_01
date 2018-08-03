@@ -30,6 +30,10 @@ class GroupsController < ApplicationController
     @task.subtasks.build
   end
 
+  def index
+    @current_groups = current_user.groups
+  end
+
   def add_member
     member = GroupMember.new group_member_params
     if member.save

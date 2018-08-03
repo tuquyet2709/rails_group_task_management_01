@@ -1536,6 +1536,22 @@ subtask_row {
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
+
+.team_body_list_group {
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 24px;
+	background: #FFFFFF;
+	border-radius: 6px;
+	box-shadow: 0px 1px 10px rgba(29,34,47,0.1);
+	text-align: center;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
 .team_item:hover .team_body
 {
 	box-shadow: 0px 5px 40px rgba(29,34,47,0.15);
@@ -2060,4 +2076,9 @@ subtask_row {
 .cr_list li a:hover
 {
 	color: #14bdee;
+}
+
+.groups-show-all-center {
+	margin-left: auto;
+	margin-right: auto;
 }

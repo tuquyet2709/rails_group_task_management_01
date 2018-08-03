@@ -23,6 +23,7 @@ vi:
     not_true_group: "Sai group"
     member_null: "group chưa có thành viên"
     deleted: "Đã xóa"
+    wait_admin_activate: "Chờ admin kích hoạt"
   static_pages:
     home:
       title: "Trang chủ"
@@ -75,8 +76,13 @@ vi:
       company_local: "434 Tran Khat Chan"
       login_register: "Đăng ký và Đăng nhập"
       contact: "Liên Hệ"
-    about:
-      title: "Giới thiệu"
+
+    report:
+      title: "Báo cáo"
+
+    group:
+      title: "Nhóm"
+      group_management: "Quản lí group"
 
   sessions:
     new:
@@ -116,6 +122,7 @@ vi:
       follower: "Theo dõi"
       group_management: "Quản lý nhóm"
       create_group: "Tạo nhóm"
+      null: "Rỗng"
     edit:
       title_edit: "Chỉnh sửa hồ sơ"
       save_changes: "Lưu thay đổi"
@@ -166,6 +173,12 @@ vi:
     member_report: "Quản lý báo cáo"
     members: "members"
     subtasks: "subtasks"
+    show:
+      title: "Nhóm"
+    index:
+      title: "Nhóm"
+      your_group: "Nhóm của bạn"
+  index_admin:
     title: "Quản lý người dùng"
     member: "Thành Viên"
     leader: "Leader"

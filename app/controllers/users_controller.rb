@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @user = if user_params[:role] == "member"
+              User.new user_params.merge(activated: 1)
+            else
+              User.new user_params.merge(activated: 0)
+            end
     if @user.save
       log_in @user
       flash[:info] = t "flash.create_user_successful"
@@ -27,8 +31,8 @@ class UsersController < ApplicationController
     if current_user? @user
       find_report
     else
-      @report_ano = @user.reports.order_desc.paginate page: params[:page],
-                                           per_page: Settings.users.per_page
+      @report_ano = @user.reports.order_desc.paginate page:
+        params[:page], per_page: Settings.users.per_page
     end
     render "show_member"
   end
@@ -41,10 +45,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to root_url unless @user && @user.activated
-    show_member if @user.member?
-    check_leader if @user.leader?
-    show_admin if @user.admin?
+    if @user && @user.activated
+      show_member if @user.member?
+      check_leader if @user.leader?
+      show_admin if @user.admin?
+    else
+      flash[:danger] = t "flash.wait_admin_activate"
+      redirect_to root_url
+    end
   end
 
   def show_admin

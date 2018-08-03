@@ -22,6 +22,23 @@
         </div>
         <%= render "follow_form" if logged_in? %>
       </div>
+
+      <% @user ||= current_user %>
+      <% if @user == current_user %>
+        <div class="team_body_list_group">
+          <div class="team_title"><a>List group</a></div>
+          <div class="social_list">
+            <% @user ||= current_user %>
+            <% if @user.groups.count == 0 %>
+              <p><%= t "users.show.null" %></p>
+            <% else %>
+              <% @user.groups.each do |group| %>
+                <li><%= link_to group.name, group %></li>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   </div>
@@ -34,7 +51,7 @@
         <ol class="reports">
           <%= render @reports %>
         </ol>
-        <%= will_paginate @reports, renderer:  WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+        <%= will_paginate @reports, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
       <% end %>
     <% else %>
       <div id="view_report">

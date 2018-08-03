@@ -9,10 +9,6 @@
         <%= f.email_field :email, class: "form-control", placeholder: t("users.new.email_address") %>
         <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("users.new.password_confirmation") %>
-        <div class="gravatar_edit">
-          <%= gravatar_for @user %>
-          <%= link_to t(".change"), "http://gravatar.com/emails", target: "_blank" %>
-        </div>
         <%= f.submit t(".save_changes"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
       <% end %>
     </div>
