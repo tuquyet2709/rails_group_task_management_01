@@ -1,154 +1,56 @@
 <div class="courses">
   <div class="container">
     <div class="row">
+      <!-- Courses Sidebar -->
+      <%= render "groups/menu" %>
       <!-- Courses Main Content -->
       <div class="col-lg-8">
         <center>
           <div class="sidebar_section_title"><%= t "tasks.progress" %></div>
         </center>
-        <div class="courses_container">
-          <div class="row courses_row">
-              <!-- Course -->
-              <div class="col-lg-6 course_col">
-              </div>
-          </div>
+        <br><br>
+        <div class="ex1">
+          <center>
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr class="table-active">
+                  <th>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <%= t "tasks.member" %>
+                    </th>
+                  <% @task_statistic.first.subtasks.each do |subtask| %>
+                  <th>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <%= subtask.content %>
+                    </th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <% @task_statistic.order(done_tasks: :desc).each do |task2| %>
+                <tr>
+                  <td><%= task2.user.name %></td>
+                  <% task2.subtasks.each do |sub| %>
+                  <td width="">
+                    <% if sub.done%>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <% else %>
+                    <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+                    <% end %>
+                  </td>
+                  <% end %>
+
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </center>
+
         </div>
 
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th><%= t "tasks.member" %></th>
-              <th><%= t "tasks.completed" %></th>
-              <th><%= t "tasks.not_completed" %></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @task_statistic.each do |task2| %>
-            <tr>
-              <td><%= task2.user.name %></td>
-              <td>
-                <% task2.subtasks.each do |sub| %>
-                  <% if sub.done? %>
-                    [<%= sub.content %>]
-                  <% end %>
-                <% end %>
-              </td>
-              <td>
-                <% task2.subtasks.each do |sub| %>
-                  <% unless sub.done%>
-                    [<%= sub.content %>]
-                  <% end %>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+      </div>
 
-      </div>
-      <!-- Courses Sidebar -->
-      <div class="col-lg-4">
-        <div class="sidebar">
-          <!-- Categories -->
-          <div class="sidebar_section">
-            <div class="sidebar_section_title"><%= t "groups.main_function" %></div>
-            <div class="sidebar_categories">
-              <ul>
-                <% if current_user.leader? %>
-                  <li>
-                    <%= link_to t("groups.create_task"), "#", "data-toggle": "modal",
-                      "data-target": "#squarespaceModal" %>
-                  </li>
-                <% end %>
-                <li><%= link_to t("groups.task_list"), "#" %></li>
-                <li><%= link_to t("groups.member_list"), "#" %></li>
-                <li><%= link_to t("groups.member_report"), "#" %></li>
-                <li><%= link_to t("groups.statistic"), "#" %></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Latest Course -->
-          <div class="sidebar_section">
-            <div class="courses_search_container">
-              <%= form_for :search, url: search_path, html: {class: "courses_search_form d-flex flex-row align-items-center justify-content-start"} do |f| %>
-                <%= f.text_field :name, class: "courses_search_input", placeholder: t("groups.search_member"), required: "required" %>
-                <%= f.hidden_field :group, value: @group.id %>
-                <%= f.submit t("groups.search"), class: "courses_search_button ml-auton" %>
-              <% end %>
-            </div>
-            <div class="sidebar_section_title"><%= t "groups.members" %></div>
-            <div class="sidebar_latest">
-              <% @users.each do |user| %>
-                <!-- Latest Course -->
-                <div class="latest d-flex flex-row align-items-start justify-content-start">
-                  <div class="latest_image">
-                    <div><%= gravatar_for user, size: Settings.users.size_page %></div>
-                  </div>
-                  <div class="latest_content">
-                    <div class="latest_title"><a href="course.html"><%= user.name %></a></div>
-                    <div class="latest_price">
-                      <% if user.in_group @group %>
-                        <%= link_to add_member_path(group_member: {group_id: @group.id,
-                                                                   member_id: user.id}), method: :post do %>
-                          <i class="fa fa-user-plus" aria-hidden="true"> add </i>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-              <%= will_paginate @users %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"></span></button>
-        <h3 class="modal-title" id="lineModalLabel">
-          <%= t "users.show.create_group" %>
-        </h3>
-      </div>
-      <div class="modal-body">
-        <%= form_for @task do |f| %>
-          <%= f.hidden_field :group_id, value: @group.id %>
-          <div class="form-group">
-            <label for="exampleInputEmail1"><%= t "tasks.title" %></label>
-            <%= f.text_field :title, class: "form-control", placeholder: t("groups.name") %>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1"><%= t "groups.description" %></label>
-            <%= f.text_field :content, class: "form-control", placeholder: t("groups.description") %>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1"><%= t "tasks.deadline" %></label>
-            <br>
-            <center>
-              <%= f.date_field :start_date %> -
-              <%= f.date_field :end_date %>
-            </center>
-          </div>
-          <hr>
-          <div id="child_fields">
-          <li id="add-date">
-            <%= link_to t("tasks.add_subtask"), "#", id: "addbut", format: :js %>
-          </li>
-          <%= f.fields_for :subtasks do |builder| %>
-            <li>
-              <%= render "groups/subtask", ff: builder %>
-            </li>
-          <% end %>
-          <%= f.submit t("tasks.submit"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render "new_task_modal" %>

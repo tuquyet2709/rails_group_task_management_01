@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action only: [:destroy] do
     check_leader_group params[:id]
   end
-  before_action only: [:add_member] do
+  before_action only: [:add_member, :remove_member] do
     check_leader_group params[:group_member][:group_id]
   end
 
@@ -27,7 +27,10 @@ class GroupsController < ApplicationController
     @users = @group.members.paginate page: params[:page],
                                      per_page: Settings.users.per_page
     @task = Task.new
-    @task.subtasks.build
+    unless current_user.leader?
+      @user_tasks = current_user.tasks
+        .where(group_id: @group.id).order updated_at: :desc
+    end
   end
 
   def index
@@ -101,7 +104,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit :name, :description, :picture,
+    params.require(:group).permit :name, :description,
       :function
   end
 

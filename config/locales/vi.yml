@@ -161,7 +161,7 @@ vi:
   groups:
     group: "nhóm"
     name: "Tên nhóm"
-    function: "Chức năng của nhóm"
+    function: "Menu"
     description: "Mô tả"
     search: "Tìm"
     select_imgage: "Select imgage"
@@ -178,6 +178,7 @@ vi:
     index:
       title: "Nhóm"
       your_group: "Nhóm của bạn"
+    your_page: "Trang của bạn"
   index_admin:
     title: "Quản lý người dùng"
     member: "Thành Viên"
