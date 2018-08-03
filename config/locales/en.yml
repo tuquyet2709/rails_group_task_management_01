@@ -1,5 +1,7 @@
 en:
   flash:
+    update_successful: "update successful"
+    update_fail: "update fail"
     cant_find_user: "Can't find user"
     cant_find_group: "Can't find group"
     create_user_successful: "Create user successful!"
@@ -160,9 +162,11 @@ en:
     follower: "Follower"
 
   groups:
+    edit: "Edit"
     group: "group"
     name: "Group name"
     function: "Menu"
+    function: "Information"
     description: "Description"
     select_imgage: "Select imgage"
     search: "Search"
@@ -172,7 +176,7 @@ en:
     member_list: "Members list"
     statistic: "Statistic"
     member_report: "Member 's reports"
-    members: "thành viên"
+    members: "Member"
     subtasks: "subtasks"
     show:
       title: "Group"

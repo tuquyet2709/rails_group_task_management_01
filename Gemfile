@@ -28,9 +28,9 @@ gem "will_paginate"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", "~> 2.13"
+  gem "mysql2"
   gem "rubocop", "~> 0.54.0", require: false
   gem "selenium-webdriver"
-  gem "mysql2"
 end
 
 group :development do

@@ -2,8 +2,14 @@
   <div class="sidebar">
     <!-- Categories -->
     <div class="sidebar_section">
-      <div class="sidebar_section_title"><%= t "groups.main_function" %></div>
+      <div class="sidebar_section_title"><%= t "groups.function" %></div>
       <div class="sidebar_categories">
+
+        <strong><i class="fa fa-id-badge" aria-hidden="true"></i>
+        <%= t "groups.name" %>:</strong> <%= @group.name %><br>
+        <strong><i class="fa fa-user" aria-hidden="true"></i>
+        <%= t "index_admin.leader" %>:</strong> <%= @group.leader.name %>
+        <br><br>
         <ul>
           <% if current_user.leader? %>
           <li>
@@ -36,7 +42,9 @@
             <div><%= gravatar_for user, size: Settings.users.size_page %></div>
           </div>
           <div class="latest_content">
-            <div class="latest_title"><a href="course.html"><%= user.name %></a></div>
+            <div class="latest_title">
+              <%= link_to user.name, user_path(user.id) %>
+            </div>
             <div class="latest_price">
               <% if current_user.leader? %>
               <% if user.in_group @group %>
