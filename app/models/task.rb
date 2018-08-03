@@ -12,7 +12,7 @@ class Task < ApplicationRecord
   validates :end_date, presence: true
   validate :task_end_date
 
-  scope :order_gti_asc, ->{order group_task_id: :asc}
+  scope :order_gti_asc, ->{order group_task_id: :desc}
 
   def task_end_date
     return if start_date <= end_date

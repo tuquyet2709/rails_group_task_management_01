@@ -10,6 +10,9 @@ class TasksController < ApplicationController
     check_leader_or_member params[:group_id]
     find_group params[:group_id]
   end
+  before_action only: [:statistic, :destroy] do
+    check_leader_group params[:group_id]
+  end
 
   def show
     @users = @group.members.paginate page: params[:page],
@@ -20,6 +23,7 @@ class TasksController < ApplicationController
     group_taskid = generate_group_task_id
     @group.members.each do |member|
       @task = Task.new task_params.merge(member_id: member.id,
+                                         done_tasks: 0,
                                          group_task_id: group_taskid)
       @task.subtasks.each do |subtask|
         subtask.done = 0
@@ -52,13 +56,15 @@ class TasksController < ApplicationController
     @users = @group.members.paginate page: params[:page],
                                      per_page: Settings.users.per_page
     @task = Task.new
-    @task.subtasks.build
     @task_statistic = Task.where group_task_id: params[:id]
   end
 
   def change_subtask
     @subtask = Subtask.find_by id: params[:subtask][:subtask_id]
     @subtask.update_attribute :done, !@subtask.done?
+    @task = Task.find_by id: @subtask.task_id
+    @task.done_tasks = @task.subtasks.where(done: true).count
+    @task.save
     respond_to do |format|
       format.js
       format.html

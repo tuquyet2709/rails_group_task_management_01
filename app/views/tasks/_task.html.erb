@@ -21,9 +21,11 @@
         <br><i class="fa fa-calendar" aria-hidden="true"></i>
         <%= t "tasks.end_date" %><%= task.end_date %>
         <br>
-        <%= link_to group_task_path(@group.id, task.id), method: :delete,
-          data: {confirm: t("users.delete.confirm")} do %>
-          <i class="fa fa-times" aria-hidden="true"> <%= t "users.delete.delete" %></i>
+        <% if current_user.leader? %>
+          <%= link_to group_task_path(@group.id, task.id), method: :delete,
+            data: {confirm: t("users.delete.confirm")} do %>
+            <i class="fa fa-times" aria-hidden="true"> <%= t "users.delete.delete" %></i>
+          <% end %>
         <% end %>
       </div>
     </div>

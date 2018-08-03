@@ -30,7 +30,7 @@
                       <div class="card">
                         <div class="card-body text-center">
                           <p>
-                           <%= image_tag group.picture.url, class: "img-fluid" %>
+                           <%= image_tag "https://res.cloudinary.com/gtm2018/image/upload/v1533282145/group.jpg", class: "img-fluid" %>
                           </p>
                           <h4 class="card-title"><%= group.name %></h4>
                           <p class="card-text"><%= group.function %></p>
@@ -82,23 +82,17 @@
       <div class="modal-body">
         <%= form_for (@group) do |f| %>
         <div class="form-group">
-          <label for="exampleInputEmail1"><%= t "group.name" %></label>
-          <%= f.text_field :name, class: "form-control", placeholder: t("group.name") %>
+          <label for="exampleInputEmail1"><%= t "groups.name" %></label>
+          <%= f.text_field :name, class: "form-control", placeholder: t("groups.name") %>
         </div>
 
         <div class="form-group">
-          <label for="exampleInputPassword1"><%= t "group.function" %></label>
-          <%= f.text_field :function, class: "form-control", placeholder: t("group.description") %>
+          <label for="exampleInputPassword1"><%= t "groups.function" %></label>
+          <%= f.text_field :function, class: "form-control", placeholder: t("groups.description") %>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1"><%= t "group.description" %></label>
-          <%= f.text_field :description, class: "form-control", placeholder: t("group.description") %>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputFile">
-          <%= t "group.select_imgage" %>
-          </label>
-          <%= f.file_field :picture %>
+          <label for="exampleInputPassword1"><%= t "groups.description" %></label>
+          <%= f.text_field :description, class: "form-control", placeholder: t("groups.description") %>
         </div>
         <%= f.submit t("users.show.create_group"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>

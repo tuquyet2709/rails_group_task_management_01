@@ -162,7 +162,7 @@ en:
   groups:
     group: "group"
     name: "Group name"
-    function: "Function"
+    function: "Menu"
     description: "Description"
     select_imgage: "Select imgage"
     search: "Search"
@@ -179,6 +179,7 @@ en:
     index:
       title: "Groups"
       your_group: "Your groups"
+    your_page: "Your page"
   index_admin:
     title: "Control Member"
     member: "Member"
