@@ -1,5 +1,7 @@
 vi:
   flash:
+    update_successful: "Đã cập nhật thành công"
+    update_fail: "cập nhật thất bại"
     cant_find_user: "Không thể tìm thấy user"
     cant_find_group: "Không thể tìm thấy group"
     create_user_successful: "Create user successful!"
@@ -159,6 +161,7 @@ vi:
     follower: "Theo dõi"
 
   groups:
+    edit: "chỉnh sửa"
     group: "nhóm"
     name: "Tên nhóm"
     function: "Menu"

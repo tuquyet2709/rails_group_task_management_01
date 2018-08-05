@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :find_group_member, only: [:remove_member]
-  before_action :find_group, only: [:show, :seach, :destroy]
-  before_action only: [:destroy] do
+  before_action :find_group, only: [:show, :seach, :destroy, :edit, :update]
+  before_action only: [:destroy, :edit, :update, :create] do
     check_leader_group params[:id]
   end
   before_action only: [:add_member, :remove_member] do
@@ -10,6 +10,17 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+  end
+
+  def edit; end
+
+  def update
+    if @group.update_attributes group_params
+      flash[:info] = t "flash.update_successful"
+    else
+      flash[:danger] = t "flash.update_fail"
+    end
+    redirect_to @group
   end
 
   def create
@@ -27,10 +38,10 @@ class GroupsController < ApplicationController
     @users = @group.members.paginate page: params[:page],
                                      per_page: Settings.users.per_page
     @task = Task.new
-    unless current_user.leader?
-      @user_tasks = current_user.tasks
-        .where(group_id: @group.id).order updated_at: :desc
-    end
+    return if current_user.leader?
+    @user_tasks = current_user.tasks
+                              .where(group_id: @group.id)
+                              .order updated_at: :desc
   end
 
   def index
