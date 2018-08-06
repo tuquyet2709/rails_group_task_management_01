@@ -10,7 +10,7 @@ en:
     create_user_eror: "Create user erorr!"
     add_user_eror: "Add user erorr!"
     add_task_error: "Add task failure!"
-    create_group_eror: "Create group erorr!"
+    create_group_eror: "Create group error!"
     invalid_message: "Invalid email/password combination"
     user_updated: "Profile updated"
     user_deleted: "User deleted"
@@ -163,6 +163,9 @@ en:
     follower: "Follower"
 
   groups:
+    group_nil: "You have not created any group"
+    task_nil: "You have not created any task"
+    member_nil: "There anent any member"
     edit: "Edit"
     group: "group"
     name: "Group name"
