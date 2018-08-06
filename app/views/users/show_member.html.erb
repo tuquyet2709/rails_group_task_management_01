@@ -10,11 +10,11 @@
         <div class="social_list">
           <% @user ||= current_user %>
           <ul>
-            <li><%= link_to t("user.show.following"), following_user_path(@user) %>
+            <li><%= link_to t("users.show.following"), following_user_path(@user) %>
               <br class="stat">
               <strong id="following"><%= @user.following.count %></strong>
             </li>
-            <li><%= link_to t("user.show.follower"), followers_user_path(@user) %>
+            <li><%= link_to t("users.show.follower"), followers_user_path(@user) %>
               <br class="stat">
               <strong id="followers"> <%= @user.followers.count %></strong>
             </li>
@@ -26,7 +26,7 @@
       <% @user ||= current_user %>
       <% if @user == current_user %>
         <div class="team_body_list_group">
-          <div class="team_title"><a>List group</a></div>
+          <div class="team_title"><a><%= t "users.show.list_group" %></a></div>
           <div class="social_list">
             <% @user ||= current_user %>
             <% if @user.groups.count == 0 %>
@@ -47,7 +47,7 @@
       <div id="report-errors"></div>
       <%= render "shared/report_form" %>
       <% if @user.reports.any? %>
-        <h3><%= t "report.friend" %> </h3>
+        <h3><%= t "report.reports" %> </h3>
         <ol class="reports">
           <%= render @reports %>
         </ol>

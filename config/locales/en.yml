@@ -74,7 +74,8 @@ en:
 
     base:
       company_name: "Framgia"
-      company_mail: "framgia@framgia.com"
+      company_mail: "info.framgia@framgia.com"
+      company_phone: "012-3456-99999"
       company_local: "434 Tran Khat Chan"
       login_register: "Register or Login"
       contact: "Contact Us"
@@ -94,7 +95,6 @@ en:
       remember_me: "Remember me on this computer"
       email_address: "Email address"
       password: "Password"
-      forgot_password: "Forgot the password?"
       or: "Or"
 
   profile:
@@ -123,6 +123,7 @@ en:
       following: "Following"
       follower: "Follower"
       group_management: "Groups management"
+      list_group: "List group"
       create_group: "Create new group"
       null: "null"
     edit:
@@ -151,7 +152,7 @@ en:
     Posted: "Posted"
     ago: "ago"
     write_new: "Write new report"
-    friend: "Friend Report"
+    reports: "Reports"
     task: "Task"
     subtask: "Subtask"
 
@@ -165,7 +166,7 @@ en:
     edit: "Edit"
     group: "group"
     name: "Group name"
-    function: "Menu"
+    create_tasks: "Create tasks"
     function: "Information"
     description: "Description"
     select_imgage: "Select imgage"
@@ -176,7 +177,7 @@ en:
     member_list: "Members list"
     statistic: "Statistic"
     member_report: "Member 's reports"
-    members: "Member"
+    members: "Members"
     subtasks: "subtasks"
     show:
       title: "Group"

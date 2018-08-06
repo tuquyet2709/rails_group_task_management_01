@@ -74,7 +74,8 @@ vi:
       le_huynh_duc: "Lê Huỳnh Đức"
     base:
       company_name: "Framgia"
-      company_mail: "framgia@framgia.com"
+      company_mail: "info.framgia@framgia.com"
+      company_phone: "012-3456-99999"
       company_local: "434 Tran Khat Chan"
       login_register: "Đăng ký và Đăng nhập"
       contact: "Liên Hệ"
@@ -94,7 +95,6 @@ vi:
       remember_me: "Nhớ tôi"
       email_address: "Địa chỉ email"
       password: "Mật khẩu"
-      forgot_password: "Quên mật khẩu"
       or: "Hoặc"
 
   profile:
@@ -123,6 +123,7 @@ vi:
       following: "Đang theo dõi"
       follower: "Theo dõi"
       group_management: "Quản lý nhóm"
+      list_group: "Danh sách nhóm"
       create_group: "Tạo nhóm"
       null: "Rỗng"
     edit:
@@ -152,7 +153,7 @@ vi:
     Posted: "Đã đăng tải"
     ago: "trước"
     write_new: "Viết report mới"
-    friend: "Report của bạn bè"
+    reports: "Các report"
 
   follow:
     submit_follow: "Theo Dõi"
@@ -164,17 +165,18 @@ vi:
     edit: "chỉnh sửa"
     group: "nhóm"
     name: "Tên nhóm"
+    create_tasks: "Tạo task"
     function: "Menu"
     description: "Mô tả"
     search: "Tìm"
-    select_imgage: "Select imgage"
+    select_imgage: "Chọn ảnh"
     search_member: "Tìm thành viên"
     task_list: "Danh sách công việc"
     main_function: "Chức năng chính"
     member_list: "Danh sách thành viên"
     statistic: "Thống kê"
     member_report: "Quản lý báo cáo"
-    members: "members"
+    members: "Thành viên"
     subtasks: "subtasks"
     show:
       title: "Nhóm"

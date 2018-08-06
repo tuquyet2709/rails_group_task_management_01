@@ -1127,6 +1127,7 @@ section
 }
 .sidebar_section_title
 {
+    margin-top: 20px;
 	font-family: 'Roboto Slab', serif;
 	font-size: 24px;
 	font-weight: 700;
