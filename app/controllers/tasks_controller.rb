@@ -28,7 +28,7 @@ class TasksController < ApplicationController
       @task.subtasks.each do |subtask|
         subtask.done = 0
       end
-      @task.remain_time = @task.end_date - 12.hours
+      @task.remain_time = @task.end_date - 12.hours if @task.end_date
       task_save
     end
     redirect_to group_path(@group.id)
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
         member.sent_mail_deadline @task
       end
     else
-      flash[:danger] = t "flash.add_task_error"
+      flash[:danger] = @task.errors.full_messages
     end
   end
 

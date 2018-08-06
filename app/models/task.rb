@@ -10,11 +10,14 @@ class Task < ApplicationRecord
   validates :content, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :title, presence: true
+  validates :subtasks, presence: true
   validate :task_end_date
 
   scope :order_gti_asc, ->{order group_task_id: :desc}
 
   def task_end_date
+    return if start_date.nil? || end_date.nil?
     return if start_date <= end_date
     errors.add :end_date, I18n.t("tasks.start_cant_later_than_end")
   end

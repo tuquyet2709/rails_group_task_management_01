@@ -162,6 +162,9 @@ vi:
     follower: "Theo dõi"
 
   groups:
+    group_nil: "Bạn chưa tạo group nào"
+    task_nil: "Bạn chưa tạo task nào"
+    member_nil: "Chưa có thành viên"
     edit: "chỉnh sửa"
     group: "nhóm"
     name: "Tên nhóm"

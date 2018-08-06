@@ -12,17 +12,29 @@
         <div class="courses_container">
           <div class="row courses_row">
             <% if current_user.leader? %>
-              <% listTask = @group.tasks.order_gti_asc %>
-              <% i =  listTask.blank? ? 1 : (listTask.first.group_task_id) - 1  %>
-              <% listTask.each do |task| %>
-                <% unless i == task.group_task_id %>
-                  <% i = task.group_task_id %>
-                  <%= render "tasks/task", task: task %>
+              <% unless @group.tasks.blank? %>
+                <% listTask = @group.tasks.order_gti_asc %>
+                <% i =  listTask.blank? ? 1 : (listTask.first.group_task_id) - 1  %>
+                <% listTask.each do |task| %>
+                  <% unless i == task.group_task_id %>
+                    <% i = task.group_task_id %>
+                    <%= render "tasks/task", task: task %>
+                  <% end %>
                 <% end %>
+              <% else %>
+                <div class="div-center">
+                  <%= t "groups.task_nil" %>
+                </div>
               <% end %>
             <% else %>
-              <% @user_tasks.each do |task| %>
-                  <%= render "tasks/task", task: task %>
+              <% unless @user_tasks.blank? %>
+                <% @user_tasks.each do |task| %>
+                    <%= render "tasks/task", task: task %>
+                <% end %>
+              <% else %>
+                <div class="div-center">
+                  <%= t "groups.task_nil" %>
+                </div>
               <% end %>
             <% end %>
           </div>

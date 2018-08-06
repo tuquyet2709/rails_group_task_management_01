@@ -1,12 +1,13 @@
 class GroupsController < ApplicationController
   before_action :find_group_member, only: [:remove_member]
   before_action :find_group, only: [:show, :seach, :destroy, :edit, :update]
-  before_action only: [:destroy, :edit, :update, :create] do
+  before_action only: [:destroy, :edit, :update] do
     check_leader_group params[:id]
   end
   before_action only: [:add_member, :remove_member] do
     check_leader_group params[:group_member][:group_id]
   end
+  before_action :is_leader, only: [:create]
 
   def new
     @group = Group.new
@@ -18,7 +19,7 @@ class GroupsController < ApplicationController
     if @group.update_attributes group_params
       flash[:info] = t "flash.update_successful"
     else
-      flash[:danger] = t "flash.update_fail"
+      flash[:danger] = @group.errors.full_messages
     end
     redirect_to @group
   end
@@ -28,7 +29,7 @@ class GroupsController < ApplicationController
     if @group.save
       flash[:info] = t "flash.create_user_successful"
     else
-      flash[:danger] = t "flash.create_group_erorr"
+      flash[:danger] = @group.errors.full_messages
     end
     redirect_to current_user
   end
@@ -82,6 +83,12 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def is_leader
+    return if current_user.leader?
+    flash[:danger] = t "flash.you_are_not_leader"
+    redirect_to current_user
+  end
 
   def find_group_member
     @group_member = GroupMember
