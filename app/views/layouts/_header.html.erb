@@ -1,7 +1,7 @@
 <header class="header">
 
   <!-- Top Bar -->
-  <% unless logged_in? %>
+
   <div class="top_bar">
     <div class="top_bar_container">
       <div class="container">
@@ -10,24 +10,35 @@
             <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
               <ul class="top_bar_contact_list">
                 <li>
+                  <i class="fa fa-briefcase" aria-hidden="true"></i>
                   <div><%= t "static_pages.base.company_name" %></div>
                 </li>
                 <li>
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  <div><%= t "static_pages.base.company_local" %></div>
+                </li>
+                <li>
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <div><%= t "static_pages.base.company_phone" %></div>
+                </li>
+                <li>
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
                   <div><%= t "static_pages.base.company_mail" %></div>
                 </li>
               </ul>
-              <div class="top_bar_login ml-auto">
-                <div class="login_button">
-                <%= link_to t("static_pages.base.login_register"), login_path %>
+              <% unless logged_in? %>
+                <div class="top_bar_login ml-auto">
+                  <div class="login_button">
+                    <%= link_to t("static_pages.base.login_register"), login_path %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
 
   <!-- Header Content -->
   <div class="header_container">
@@ -52,19 +63,19 @@
                     <li><%= link_to t("static_pages.group.group_management"), current_user %></a></li>
                   <% end %>
                   <li class="dropdown">
-                  <%= link_to "#", {class: "dropdown-toggle", "data-toggle": "dropdown"} do %>
-                    <%= t"profile.account" %> <b class="caret"></b>
-                  <% end %>
-                  <ul class="dropdown-menu">
-                    <% if current_user.admin? %>
-                      <div class="dropdown-item"><%= link_to t("profile.control"), admin_users_path %></div>
+                    <%= link_to "#", {class: "dropdown-toggle", "data-toggle": "dropdown"} do %>
+                      <%= t "profile.account" %> <b class="caret"></b>
                     <% end %>
-                    <div class="dropdown-item"><%= link_to t("profile.profile"), edit_user_path(current_user.id) %></div>
-                    <div class="dropdown-item">
-                      <%= link_to t("profile.logout"), logout_path, method: :delete %>
-                    </div>
-                  </ul>
-                </li>
+                    <ul class="dropdown-menu">
+                      <% if current_user.admin? %>
+                        <div class="dropdown-item"><%= link_to t("profile.control"), admin_users_path %></div>
+                      <% end %>
+                      <div class="dropdown-item"><%= link_to t("profile.profile"), edit_user_path(current_user.id) %></div>
+                      <div class="dropdown-item">
+                        <%= link_to t("profile.logout"), logout_path, method: :delete %>
+                      </div>
+                    </ul>
+                  </li>
                 <% end %>
               </ul>
             </nav>
