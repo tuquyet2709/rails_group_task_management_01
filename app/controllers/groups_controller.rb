@@ -7,7 +7,6 @@ class GroupsController < ApplicationController
   before_action only: [:add_member, :remove_member] do
     check_leader_group params[:group_member][:group_id]
   end
-  before_action :is_leader, only: [:create]
 
   def new
     @group = Group.new
@@ -26,6 +25,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.lead_groups.build group_params
+    authorize! :create, @group
     if @group.save
       flash[:info] = t "flash.create_user_successful"
     else
@@ -75,8 +75,9 @@ class GroupsController < ApplicationController
   def search
     search_name = params[:search][:name]
     @users = User
-             .search_by_name(search_name).paginate page: params[:page],
-                                             per_page: Settings.users.per_page
+             .search_by_name(search_name)
+             .paginate page: params[:page],
+                           per_page: Settings.users.per_page
     @group = Group.find_by id: params[:search][:group]
     @task = Task.new
     render :show
@@ -84,7 +85,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def is_leader
+  def is_leader?
     return if current_user.leader?
     flash[:danger] = t "flash.you_are_not_leader"
     redirect_to current_user
@@ -93,7 +94,7 @@ class GroupsController < ApplicationController
   def find_group_member
     @group_member = GroupMember
                     .find_by group_id: params[:group_member][:group_id],
-      member_id: params[:group_member][:member_id]
+                                 member_id: params[:group_member][:member_id]
     return if @group_member
     flash[:danger] = t "flash.cant_find_user"
     redirect_to request.referrer || root_url

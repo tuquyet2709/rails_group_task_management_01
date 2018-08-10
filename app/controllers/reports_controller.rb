@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
+    authorize! :create, @report
     @report = current_user.reports.build report_params
     if @report.save
       flash[:success] = t "report.create"
@@ -13,6 +14,7 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @report
     @report.destroy
     flash[:success] = t "flash.destroy_report"
     redirect_to current_user
