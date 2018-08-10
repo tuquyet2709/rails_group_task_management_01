@@ -34,23 +34,8 @@
         <div class="tab tab_fix_width"><%= t "index_admin.leader" %></div>
         <div class="tab tab_fix_width"><%= t "index_admin.leader_wait" %></div>
       </div>
-      <div class="tab_panels">
-
-        <!-- first -->
-        <div class="tab_panel active" , id="member">
-          <%= render "users/list_user_index", user: @member , param: "member_page" %>
-        </div>
-
-        <!--        <!-- 2 -->
-        <div class="tab_panel tab_panel_2" , id="leader">
-          <%= render "users/list_user_index", user: @leader_activated, param: "leader_page" %>
-        </div>
-
-        <!-- 3 -->
-        <div class="tab_panel tab_panel_3" , id="noleader">
-          <%= render "users/list_user_index", user: @leader_no_active, param: "noleader_page" %>
-        </div>
-
+      <div id = "load_tab">
+        <%= render "tab" %>
       </div>
     </div>
   </div>

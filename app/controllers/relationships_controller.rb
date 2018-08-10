@@ -4,8 +4,8 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find_by id: params[:followed_id]
     @report_ano = user.reports.order_desc
-                      .paginate page: params[:page],
-                                per_page: Settings.users.per_page
+                      .page(params[:page])
+                      .per_page Settings.users.per_page
     current_user.follow @user
     respond_to do |format|
       format.html{redirect_to @user}

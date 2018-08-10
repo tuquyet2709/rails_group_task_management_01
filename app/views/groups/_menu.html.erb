@@ -37,7 +37,7 @@
       <% end %>
       <div class="sidebar_section_title"><%= t "groups.members" %></div>
       <div class="sidebar_latest">
-        <% unless @user.blank? %>
+        <% unless @users.blank? %>
         <% @users.each do |user| %>
         <!-- Latest Course -->
         <div class="latest d-flex flex-row align-items-start justify-content-start">
@@ -74,7 +74,7 @@
                <%= t "groups.member_nil" %>
              </div>
            <% end %>
-           <%= will_paginate @users %>
+        <%= paginate @users, theme: "twitter-bootstrap-4" %>
          </div>
        </div>
      </div>

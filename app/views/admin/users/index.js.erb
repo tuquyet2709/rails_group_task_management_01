@@ -1,0 +1,18 @@
+var number = 1;
+$('.tab_panel').each(function (node) {
+    if ($(this).hasClass("active")) {
+        number = $(this).data('number');
+    }
+})
+$("#load_tab").html("<%= escape_javascript(render("tab")) %>");
+
+
+$('.tab_panel').each(function (node) {
+    $(this).removeClass('active')
+})
+
+$('.tab_panel').each(function (node) {
+    if ($(this).data('number') == number) {
+        $(this).addClass('active')
+    }
+})
