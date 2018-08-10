@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
   include SessionsHelper
   before_action :set_locale
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json{head :forbidden, content_type: "text/html"}
@@ -9,6 +12,14 @@ class ApplicationController < ActionController::Base
       format.js{head :forbidden, content_type: "text/html"}
     end
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit :sign_up, keys: [:name]
+    devise_parameter_sanitizer.permit :account_update, keys: [:name]
+  end
+
   private
 
   def set_locale
@@ -25,12 +36,5 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     {locale: I18n.locale}
-  end
-
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = t "flash.log_in"
-    redirect_to login_path
   end
 end

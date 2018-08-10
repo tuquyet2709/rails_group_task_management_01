@@ -95,6 +95,11 @@ vi:
       group_management: "Quản lí group"
 
   sessions:
+    confirm_account: "xác nhận tài khoản"
+    enter_name: "Điền tên bạn"
+    enter_mail: "Điền địa chỉ mail"
+    enter_password: "Điền mật khẩu"
+    confirm_pass: "Xác nhận mật khẩu"
     new:
       login: "Đăng nhập"
       new_user: "Người dùng mới?"

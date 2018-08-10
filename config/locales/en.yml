@@ -95,6 +95,11 @@ en:
       group_management: "Group management"
 
   sessions:
+    confirm_account: "Confirm my account"
+    enter_name: "Enter your name"
+    enter_mail: "Enter your email"
+    enter_password: "Enter your password"
+    confirm_pass: "Your password confirmation"
     new:
       login: "Login"
       new_user: "New user?"
@@ -112,7 +117,7 @@ en:
 
   users:
     new:
-      signup: "Signup"
+      signup: "Sign up"
       title: "New User"
       content_title: "Sign up"
       content: "This will be a sign up page for new users."
