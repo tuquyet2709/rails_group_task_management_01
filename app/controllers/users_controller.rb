@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
   before_action :find_user, only: [:edit, :update, :show, :destroy,
                                    :followers, :following]
 
@@ -84,6 +83,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    can? :destroy, @user
     @user.destroy
     flash[:success] = t "flash.user_deleted"
     redirect_to admin_users_path
