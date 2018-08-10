@@ -15,8 +15,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @users = @group.members.paginate page: params[:page],
-                                     per_page: Settings.users.per_page
+    @users = @group.members.page(params[:page])
+                   .per_page Settings.users.per_page
   end
 
   def create

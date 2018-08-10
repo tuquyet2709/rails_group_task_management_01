@@ -1,0 +1,18 @@
+<div class="tab_panels">
+
+  <!-- first -->
+  <div class="tab_panel active" data-number="1" , id="member">
+    <%= render "users/list_user_index", user: @member, param: "member_page" %>
+  </div>
+
+  <!--        <!-- 2 -->
+  <div class="tab_panel tab_panel_1 " data-number="2" , id="leader">
+    <%= render "users/list_user_index", user: @leader_activated, param: "leader_page" %>
+  </div>
+
+  <!-- 3 -->
+  <div class="tab_panel tab_panel_2" data-number="3" , id="noleader">
+    <%= render "users/list_user_index", user: @leader_no_active, param: "noleader_page" %>
+  </div>
+
+</div>

@@ -51,7 +51,7 @@
         <ol class="reports">
           <%= render @reports %>
         </ol>
-        <%= will_paginate @reports, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+        <%= paginate @reports, theme: "twitter-bootstrap-4" %>
       <% end %>
     <% else %>
       <div id="view_report">

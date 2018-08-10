@@ -30,16 +30,17 @@ class UsersController < ApplicationController
     if current_user? @user
       find_report
     else
-      @report_ano = @user.reports.order_desc.paginate page:
-        params[:page], per_page: Settings.users.per_page
+      @report_ano = @user.reports.order_desc
+                         .page(params[:page])
+                         .per_page Settings.users.per_page
     end
     render "show_member"
   end
 
   def find_report
-    @reports = current_user.feed
-                           .order_desc.paginate page: params[:page],
-                                        per_page: Settings.users.per_page
+    @reports = current_user.feed.order_desc
+                           .page(params[:page])
+                           .per_page Settings.users.per_page
     @report = current_user.reports.build
   end
 
@@ -91,13 +92,17 @@ class UsersController < ApplicationController
 
   def following
     @title = t "follow.following"
-    @users = @user.following.paginate page: params[:page]
+    @users = @user.following
+                  .page(params[:page])
+                  .per_page Settings.users.per_page
     render "show_follow"
   end
 
   def followers
     @title = t "follow.follower"
-    @users = @user.followers.paginate page: params[:page]
+    @users = @user.followers
+                  .page(params[:page])
+                  .per_page Settings.users.per_page
     render "show_follow"
   end
 

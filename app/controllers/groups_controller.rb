@@ -36,8 +36,8 @@ class GroupsController < ApplicationController
 
   def show
     check_leader_or_member params[:id]
-    @users = @group.members.paginate page: params[:page],
-                                     per_page: Settings.users.per_page
+    @users = @group.members.page(params[:page])
+                   .per_page Settings.users.per_page
     @task = Task.new
     return if current_user.leader?
     @user_tasks = current_user.tasks

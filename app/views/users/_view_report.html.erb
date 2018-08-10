@@ -3,5 +3,5 @@
   <ol class="reports">
     <%= render @report_ano %>
   </ol>
-  <%= will_paginate @report_ano, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+  <%= paginate @report_ano, theme: "twitter-bootstrap-4" %>
 <% end %>
