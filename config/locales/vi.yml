@@ -133,6 +133,9 @@ vi:
       list_group: "Danh sách nhóm"
       create_group: "Tạo nhóm"
       null: "Rỗng"
+      search: "Tìm kiếm"
+      task_content: "Nội dung task:"
+      report_content: "Nội dung report:"
     edit:
       title_edit: "Chỉnh sửa hồ sơ"
       save_changes: "Lưu thay đổi"

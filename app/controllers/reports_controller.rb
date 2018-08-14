@@ -3,8 +3,8 @@ class ReportsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
-    authorize! :create, @report
     @report = current_user.reports.build report_params
+    authorize! :create, @report
     if @report.save
       flash[:success] = t "report.create"
     else

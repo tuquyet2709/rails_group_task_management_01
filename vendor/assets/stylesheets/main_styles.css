@@ -949,6 +949,17 @@ section
 	margin-right: 10px;
 }
 
+.search-margin-left {
+	float: left;
+	margin-left: 15px;
+	margin-right: 40px;
+	margin-top: 10px;
+}
+
+.search-button {
+	margin-top: 10px;
+}
+
 /*********************************
 7. Features
 *********************************/
