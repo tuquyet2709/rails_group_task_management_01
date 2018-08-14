@@ -960,6 +960,22 @@ section
 	margin-top: 10px;
 }
 
+.search-button-group {
+	width: 60px;
+	height: 40px;
+	background: #14bdee;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: 500;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+	float: right;
+	margin-top: 3px;
+	margin-right: 2px;
+}
+
 /*********************************
 7. Features
 *********************************/

@@ -32,18 +32,18 @@ class Admin::UsersController < ApplicationController
   def member
     @member = User.where(role: 2)
                   .page(params[:member_page])
-                  .per_page Settings.users.per_page
+                  .per Settings.users.per_page
   end
 
   def leader
     @leader_activated = User.where(role: 1, activated: true)
                             .page(params[:leader_page])
-                            .per_page Settings.users.per_page
+                            .per Settings.users.per_page
   end
 
   def noleader
     @leader_no_active = User.where(role: 1, activated: false)
                             .page(params[:noleader_page])
-                            .per_page Settings.users.per_page
+                            .per Settings.users.per_page
   end
 end

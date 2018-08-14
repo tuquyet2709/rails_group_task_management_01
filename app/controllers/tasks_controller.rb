@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
   def show
     @users = @group.members.page(params[:page])
-                   .per_page Settings.users.per_page
+                   .per Settings.users.per_page
   end
 
   def create
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
 
   def statistic
     @users = @group.members.paginate page: params[:page],
-                                     per_page: Settings.users.per_page
+                                     per: Settings.users.per_page
     @task = Task.new
     @task_statistic = Task.where group_task_id: params[:id]
   end

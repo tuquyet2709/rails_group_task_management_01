@@ -36,8 +36,7 @@ class GroupsController < ApplicationController
 
   def show
     check_leader_or_member params[:id]
-    @users = @group.members.page(params[:page])
-                   .per_page Settings.users.per_page
+    find_users_in_group
     @task = Task.new
     return if current_user.leader?
     @user_tasks = current_user.tasks
@@ -73,12 +72,7 @@ class GroupsController < ApplicationController
   end
 
   def search
-    search_name = params[:search][:name]
-    @users = User
-             .search_by_name(search_name)
-             .paginate page: params[:page],
-                           per_page: Settings.users.per_page
-    @group = Group.find_by id: params[:search][:group]
+    find_users_in_group
     @task = Task.new
     render :show
   end
@@ -132,5 +126,18 @@ class GroupsController < ApplicationController
     return if @group
     redirect_to root_path
     flash[:danger] = t "flash.cant_find_group"
+  end
+
+  def find_users_in_group
+    find_group
+    @users_in_group = User.where(role: "member")
+                          .page(params[:page])
+                          .per Settings.users.per_page_search_member
+    @q = @users_in_group.search params[:q]
+    @users = if params[:q].present?
+               @q.result distinct: true
+             else
+               @users_in_group
+             end
   end
 end
