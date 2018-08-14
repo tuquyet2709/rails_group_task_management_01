@@ -99,7 +99,7 @@ class GroupsController < ApplicationController
   end
 
   def leader_of_group group_id
-    Group.find_by(id: group_id).leader == current_user
+    Group.find(group_id).leader == current_user
   end
 
   def check_leader_group group_id
@@ -122,7 +122,7 @@ class GroupsController < ApplicationController
   end
 
   def find_group
-    @group = Group.find_by id: params[:id]
+    @group = Group.find params[:id]
     return if @group
     redirect_to root_path
     flash[:danger] = t "flash.cant_find_group"

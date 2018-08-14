@@ -29,7 +29,7 @@ end
                activated: false ,
                role: 1)
 end
-100.times do |n|
+20.times do |n|
   name  = Faker::Name.name
   email = "member-#{n+1}@gmail.com"
   password = "12345678"
@@ -42,7 +42,7 @@ end
                role: 2)
 end
 member = User.where(role: 2).limit(10)
-50.times do
+30.times do
   content = Faker::Lorem.sentence(5)
   member.each { |member| member.reports.create!(content: content) }
 end
