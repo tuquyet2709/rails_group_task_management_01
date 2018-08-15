@@ -6,11 +6,13 @@ Rails.application.routes.draw do
     post "/add_member", to: "groups#add_member"
     delete "/remove_member", to: "groups#remove_member"
     post "/change_subtask", to: "tasks#change_subtask"
-    # resources :users, except: :index do
-    #   member do
-    #     get :following, :followers
-    #   end
-    # end
+    devise_for :users, controllers: { confirmations: "confirmations" }
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :following, :followers
+        match "search" => "users#search", via: [:get, :post], as: :search
+      end
+    end
     resources :groups do
       resources :tasks
       get "statistic", to: "tasks#statistic"
@@ -23,6 +25,5 @@ Rails.application.routes.draw do
       end
     end
     resources :tasks
-    devise_for :users, controllers: { confirmations: "confirmations" }
   end
 end

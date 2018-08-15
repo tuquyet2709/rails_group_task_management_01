@@ -114,6 +114,7 @@ vi:
     profile: "Hồ sơ"
     logout: "Đăng xuất"
     control: "Quản lý người dùng"
+    edit_profile: "Sửa profile"
 
   users:
     new:
