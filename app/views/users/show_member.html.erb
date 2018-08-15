@@ -4,7 +4,7 @@
     <div class="team_item">
       <div class="team_body">
         <div class="center_img"><%= gravatar_for @user %></div>
-        <div class="team_title"><a><%= @user.name %></a></div>
+        <div class="team_title"><%= link_to @user.name, user_path %></div>
         <div class="team_subtitle"><a><%= @user.email %></div>
         <div class="team_subtitle"><a><%= t "report.title" %> (<%= @user.reports.count %>) </a></div>
         <div class="social_list">
@@ -25,6 +25,30 @@
 
       <% @user ||= current_user %>
       <% if @user == current_user %>
+
+        <div class="team_body_list_group">
+          <div class="team_title"><a><%= t "users.show.search" %></a></div>
+          <div class="social_list">
+            <%= search_form_for @q, url: search_user_path, html: {method: :post} do |sf| %>
+              <div class="search-margin-left">
+                <%= sf.label :task_content_cont, t("users.show.task_content")%>
+              </div>
+              <div class="col-md-12">
+                <%= sf.text_field :task_content_cont, class: "form-control" %>
+              </div>
+              <div class="search-margin-left">
+                <%= sf.label :content_cont, t("users.show.report_content") %>
+              </div>
+              <div class="col-md-12">
+                <%= sf.text_field :content_cont, class: "form-control" %>
+              </div>
+              <div class="search-button">
+                <%= sf.submit %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
         <div class="team_body_list_group">
           <div class="team_title"><a><%= t "users.show.list_group" %></a></div>
           <div class="social_list">

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :users, except: :index do
       member do
         get :following, :followers
+        match "search" => "users#search", via: [:get, :post], as: :search
       end
     end
     resources :groups do

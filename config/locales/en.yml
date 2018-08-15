@@ -133,6 +133,9 @@ en:
       list_group: "List group"
       create_group: "Create new group"
       null: "null"
+      search: "Search"
+      task_content: "Task content:"
+      report_content: "Report content:"
     edit:
       title_edit: "Edit profile"
       save_changes: "Save changes"

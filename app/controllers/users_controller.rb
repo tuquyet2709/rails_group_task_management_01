@@ -25,8 +25,7 @@ class UsersController < ApplicationController
   end
 
   def show_member
-    @tasks = Task.where(member_id: current_user.id)
-    @subtask = @tasks.map(&:subtasks).flatten
+    search_tasks_and_subtasks
     if current_user? @user
       find_report
     else
@@ -40,8 +39,22 @@ class UsersController < ApplicationController
   def find_report
     @reports = current_user.feed.order_desc
                            .page(params[:page])
-                           .per_page Settings.users.per_page
-    @report = current_user.reports.build
+                           .per Settings.users.per_page
+    @q = @reports.search(params[:q])
+    if params[:q].present?
+      @reports = @q.result(distinct: true)
+      @report = @reports.build
+    else
+      @report = current_user.reports.build
+    end
+  end
+
+  def search
+    return unless current_user.member?
+    find_user
+    search_tasks_and_subtasks
+    find_report
+    render "show_member"
   end
 
   def show
@@ -127,5 +140,10 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to root_url unless current_user.admin?
+  end
+
+  def search_tasks_and_subtasks
+    @tasks = Task.where(member_id: current_user.id)
+    @subtask = @tasks.map(&:subtasks).flatten
   end
 end
