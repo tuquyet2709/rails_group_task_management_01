@@ -1,5 +1,6 @@
 <%= provide :title, @user.name %>
 <div class="row">
+  <div id="current_id" current_id="<%= current_user.id %>"></div>
   <div class="col-lg-3 col-md-6 team_col">
     <div class="team_item">
       <div class="team_body">
@@ -72,7 +73,7 @@
       <%= render "shared/report_form" %>
       <% if @user.reports.any? %>
         <h3><%= t "report.reports" %> </h3>
-        <ol class="reports">
+        <ol class="reports" id="report_all">
           <%= render @reports %>
         </ol>
         <%= paginate @reports, theme: "twitter-bootstrap-4" %>

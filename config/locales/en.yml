@@ -114,6 +114,7 @@ en:
     profile: "Profile"
     logout: "Logout"
     control: "User control"
+    edit_profile: "Edit profile"
 
   users:
     new:

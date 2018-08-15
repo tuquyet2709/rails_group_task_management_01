@@ -19,3 +19,4 @@
 //= require jquery.colorbox-min
 //= require about
 //= require_tree .
+//= requite post_report

@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in?, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
   def create
@@ -7,6 +7,11 @@ class ReportsController < ApplicationController
     authorize! :create, @report
     if @report.save
       flash[:success] = t "report.create"
+      list_user = current_user.followers.ids
+      ActionCable.server.broadcast "report_channel",
+        content: render_to_string(partial: "reports/report", object: @report),
+        list_user: list_user,
+        current_user: current_user.id
     else
       @feed_items = []
       flash[:danger] = t "flash.destroy_report"

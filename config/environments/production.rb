@@ -99,4 +99,8 @@ Rails.application.configure do
       :authentication       => "plain",
       :enable_starttls_auto => true
   }
+  # config/environments/production.rb
+
+  config.web_socket_server_url = "wss://gtm2018.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://gtm2018.herokuapp.com', 'http://gtm2018.herokuapp.com']
 end
