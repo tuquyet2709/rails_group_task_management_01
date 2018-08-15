@@ -1,0 +1,51 @@
+<% provide :title, t("static_pages.home.register_now") %>
+<div class="counter">
+  <div class="counter_background" style="background-image:url(https://res.cloudinary.com/gtm2018/image/upload/v1533260732/counter_background.jpg)">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="counter_content">
+          <h2 class="counter_title"><%= t "static_pages.home.register_now" %></h2>
+          <div class="counter_text"><p><%= t "static_pages.home.what_is_gtm" %></p>
+          </div>
+          <div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
+            <div class="milestone">
+              <div class="milestone_counter" data-end-value="10">0</div>
+              <div class="milestone_text"><%= t(".years") %></div>
+            </div>
+            <div class="milestone">
+              <div class="milestone_counter" data-end-value="96" data-sign-after="k">0</div>
+              <div class="milestone_text"><%= t(".users") %></div>
+            </div>
+            <div class="milestone">
+              <div class="milestone_counter" data-end-value="99" data-sign-after="+">0</div>
+              <div class="milestone_text"><%= t(".groups") %></div>
+            </div>
+            <div class="milestone">
+              <div class="milestone_counter" data-end-value="6000" data-sign-after="+">0</div>
+              <div class="milestone_text"><%= t(".tasks") %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="counter_form">
+      <div class="row fill_height">
+        <div class="col fill_height">
+          <%= simple_form_for(resource, as: resource_name,
+          html: {class: "counter_form_content d-flex flex-column align-items-center justify-content-center"},
+          url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="counter_form_title"><%= t "static_pages.home.register_now" %></div>
+          <%= f.input :name,input_html: {class: "counter_input"},label: t("sessions.enter_name"), required: true, autofocus: true %>
+          <%= f.input :email,input_html: {class: "counter_input"},label: t("sessions.enter_mail"), required: true, autofocus: true %>
+          <%= f.input :password,input_html: {class: "counter_input"},label: t("sessions.enter_password"), required: true %>
+          <%= f.input :password_confirmation,input_html: {class: "counter_input"},label: t("sessions.confirm_pass"), required: true %>
+          <%= f.button :submit, t("users.new.signup"),class: "counter_form_button"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

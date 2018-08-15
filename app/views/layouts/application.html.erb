@@ -12,7 +12,8 @@
     <%= render "layouts/header" %>
       <div class="context_1">
         <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
         <% end %>
       <div class="context">
         <%= yield %>
