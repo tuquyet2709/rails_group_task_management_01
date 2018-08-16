@@ -2,8 +2,8 @@ User.create!(name:  "Duclh",
              email: "admin@gmail.com",
              password:              "12345678",
              password_confirmation: "12345678",
-             admin: true,
              activated: true,
+             confirmed_at: "2018-08-16 04:01:29",
              role: 0)
 20.times do |n|
   name  = Faker::Name.name
@@ -13,6 +13,7 @@ User.create!(name:  "Duclh",
                email: email,
                password:              password,
                password_confirmation: password,
+               confirmed_at: "2018-08-16 04:01:29",
                activated: true,
                role: 1)
 end
@@ -24,6 +25,7 @@ end
                email: email,
                password:              password,
                password_confirmation: password,
+               confirmed_at: "2018-08-16 04:01:29",
                activated: false ,
                role: 1)
 end
@@ -35,6 +37,7 @@ end
                email: email,
                password:              password,
                password_confirmation: password,
+               confirmed_at: "2018-08-16 04:01:29",
                activated: true,
                role: 2)
 end

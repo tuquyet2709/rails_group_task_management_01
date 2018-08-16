@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     else
       @report_ano = @user.reports.order_desc
                          .page(params[:page])
-                         .per_page Settings.users.per_page
+                         .per Settings.users.per_page
     end
     render "show_member"
   end
@@ -40,6 +40,10 @@ class UsersController < ApplicationController
                            .page(params[:page])
                            .per Settings.users.per_page
     @q = @reports.search(params[:q])
+    check_search
+  end
+
+  def check_search
     if params[:q].present?
       @reports = @q.result(distinct: true)
       @report = @reports.build
@@ -106,7 +110,7 @@ class UsersController < ApplicationController
     @title = t "follow.following"
     @users = @user.following
                   .page(params[:page])
-                  .per_page Settings.users.per_page
+                  .per Settings.users.per_page
     render "show_follow"
   end
 
@@ -114,7 +118,7 @@ class UsersController < ApplicationController
     @title = t "follow.follower"
     @users = @user.followers
                   .page(params[:page])
-                  .per_page Settings.users.per_page
+                  .per Settings.users.per_page
     render "show_follow"
   end
 
