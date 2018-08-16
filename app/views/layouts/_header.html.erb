@@ -55,11 +55,12 @@
             <nav class="main_nav_contaner ml-auto">
               <ul class="main_nav">
                 <li class="active"><%= link_to t("static_pages.home.title"), root_url %></li>
-
                 <% if user_signed_in? %>
                   <li><%= link_to t("static_pages.group.title"), groups_path %></a></li>
-                  <li><%= link_to t("static_pages.report.title"), reports_path %></a></li>
-                  <li><%= link_to t("static_pages.group.group_management"), groups_path %></a></li>
+                  <li><%= link_to t("static_pages.report.title"), current_user %></a></li>
+                  <% if current_user.leader? %>
+                    <li><%= link_to t("static_pages.group.group_management"), current_user %></a></li>
+                  <% end %>
                   <li class="dropdown">
                     <%= link_to "#", {class: "dropdown-toggle", "data-toggle": "dropdown"} do %>
                       <%= t "profile.account" %> <b class="caret"></b>
@@ -68,6 +69,8 @@
                       <% if current_user.admin? %>
                         <div class="dropdown-item"><%= link_to t("profile.control"), admin_users_path %></div>
                       <% end %>
+                      <div class="dropdown-item"><%= link_to t("profile.profile"), current_user %></div>
+                      <div class="dropdown-item"><%= link_to t("profile.edit_profile"), edit_user_path(current_user.id) %></div>
                       <div class="dropdown-item">
                         <%= link_to t("profile.logout"), destroy_user_session_path, method: :delete %>
                       </div>
