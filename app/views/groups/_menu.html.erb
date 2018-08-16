@@ -28,10 +28,10 @@
     <div class="sidebar_section">
       <% if current_user.leader? %>
       <div class="courses_search_container">
-        <%= form_for :search, url: search_path, html: {class: "courses_search_form d-flex flex-row align-items-center justify-content-start"} do |f| %>
-        <%= f.text_field :name, class: "courses_search_input", placeholder: t("groups.search_member"), required: "required" %>
-        <%= f.hidden_field :group, value: @group.id %>
-        <%= f.submit t("groups.search"), class: "courses_search_button ml-auton" %>
+        <%= search_form_for @q, url: search_group_path, html: {method: :post} do |sf| %>
+        <%= sf.text_field :name_cont, class: "courses_search_input",
+                          placeholder: t("groups.search_member"), required: "required"%>
+        <%= sf.submit class: "search-button-group"%>
         <% end %>
       </div>
       <% end %>
