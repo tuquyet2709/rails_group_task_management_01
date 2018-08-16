@@ -33,12 +33,14 @@
             <!-- Milestone -->
             <div class="milestone">
               <div class="milestone_counter" data-end-value="6000" data-sign-after="+">0</div>
-              <div class="milestone_text"><%= t(".tasks") %></div>
+              <div class="milestone_text"><%= t("sessions.new.tasks") %></div>
             </div>
 
           </div>
           <br>
-          <h1><%= link_to t(".sign_up_now"), new_user_registration_path %></h1>
+          <h1><%= link_to t("sessions.new.sign_up_now"), new_user_registration_path %></h1>
+          <div class="text-white"><%= t("sessions.new.or_sign_up_sign_in by") %></div>
+          <%= button_to "Google+", user_google_oauth2_omniauth_authorize_path, class: "btn-google" %>
         </div>
 
       </div>
@@ -48,12 +50,12 @@
       <div class="row fill_height">
         <div class="col fill_height">
           <%= simple_form_for(resource, as: resource_name, html: {class: "counter_form_content d-flex flex-column align-items-center justify-content-center"}, url: session_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-          <div class="counter_form_title"><%= t "sessions.new.login" %></div>
-          <%= f.input :email,input_html: {class: "counter_input"},label: t("sessions.enter_mail"), required: true, autofocus: true %>
-          <%= f.input :password,input_html: {class: "counter_input"},label: t("sessions.enter_password"), required: true %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <%= f.button :submit, t("sessions.new.login"), class: "counter_form_button"  %>
+            <%= f.error_notification %>
+            <div class="counter_form_title"><%= t "sessions.new.login" %></div>
+            <%= f.input :email, input_html: {class: "counter_input"}, label: t("sessions.enter_mail"), required: true, autofocus: true %>
+            <%= f.input :password, input_html: {class: "counter_input"}, label: t("sessions.enter_password"), required: true %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.button :submit, t("sessions.new.login"), class: "counter_form_button" %>
           <% end %>
         </div>
       </div>

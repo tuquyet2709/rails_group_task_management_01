@@ -2109,3 +2109,18 @@ subtask_row {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.btn-google {
+    width: 120px;
+    height: 46px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+	background-color: #ea4335;
+}

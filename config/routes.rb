@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, skip: [:session, :password, :registration], controllers: { omniauth_callbacks: "omniauth_callbacks" }
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     get "static_pages/home"
     post "/add_member", to: "groups#add_member"
     delete "/remove_member", to: "groups#remove_member"
     post "/change_subtask", to: "tasks#change_subtask"
-    devise_for :users, controllers: { confirmations: "confirmations" }
+    devise_for :users, controllers: {
+        confirmations: "confirmations" }, skip: [:omniauth_callbacks]
     resources :users, only: [:show, :edit, :update] do
       member do
         get :following, :followers
