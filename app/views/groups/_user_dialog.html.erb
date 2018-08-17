@@ -1,0 +1,27 @@
+<div class="FixedHeightContainer" id="user-div">
+  <div class="input-group c-search">
+    <input type="text" class="form-control" id="contact-list-search">
+  </div>
+  <div class="Content">
+    <ul class="list-group" id="contact-list">
+      <% @users.each do |user| %>
+      <li class="list-group-item">
+        <table >
+          <tr>
+            <td width="70">
+              <img src="https://res.cloudinary.com/gtm2018/image/upload/v1533282145/group.jpg" class="img" >
+            </td>
+            <td width="200">
+              <span class="name">
+                <a  onclick="alert_link(<%= user.id %>,'<%=user.name%>')">
+                  <%= user.name %>
+                </a>
+              </span><br/>
+            </td>
+          </tr>
+        </table>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
