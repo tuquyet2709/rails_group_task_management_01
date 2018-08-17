@@ -33,6 +33,9 @@ en:
     member_null: "there arent any member"
     deleted: "Deleted"
     wait_admin_activate: "Wait admin activate"
+    upgrade_leader_success: "Upgrade leader success, Wait until admin confirmed!"
+    upgrade_leader_danger: "Upgrade leader not success, try again later!"
+
   static_pages:
     home:
       title: "Home"
@@ -111,7 +114,7 @@ en:
 
   profile:
     account: "Account"
-    profile: "Profile"
+    upgrade_leader: "Upgrade to Leader"
     logout: "Logout"
     control: "User control"
     edit_profile: "Edit profile"
@@ -151,6 +154,14 @@ en:
       delete: "Delete"
       confirm: "Confirm"
       active: "Active"
+    upgrade:
+      upgrade_leader: "Upgrade Leader"
+      lets_upgrade_leader_now: "Upgrade Leader Now"
+      upgrade_info: "Upgrade to leader you can create tasks, create management groups and more!"
+      ready: "Are you ready to upgrate your role become Leader?"
+      warning: "Warning !"
+      warning_content: "Your account will not be able to log in until our manager has confirmed your leaderboard authority!"
+
   shared:
     error_messages:
       the_form_contains: "The form contains"

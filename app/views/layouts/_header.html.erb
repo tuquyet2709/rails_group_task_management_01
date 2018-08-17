@@ -69,8 +69,10 @@
                       <% if current_user.admin? %>
                         <div class="dropdown-item"><%= link_to t("profile.control"), admin_users_path %></div>
                       <% end %>
-                      <div class="dropdown-item"><%= link_to t("profile.profile"), current_user %></div>
                       <div class="dropdown-item"><%= link_to t("profile.edit_profile"), edit_user_path(current_user.id) %></div>
+                      <% if current_user.member? %>
+                        <div class="dropdown-item"><%= link_to t("profile.upgrade_leader"), upgrade_user_path(current_user.id) %></div>
+                    <% end %>
                       <div class="dropdown-item">
                         <%= link_to t("profile.logout"), destroy_user_session_path, method: :delete %>
                       </div>

@@ -1,0 +1,27 @@
+<div class="counter">
+  <div class="counter_background" style="background-image:url(https://res.cloudinary.com/gtm2018/image/upload/v1533260732/counter_background.jpg)"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="counter_content">
+          <h2 class="counter_title"><%= t("users.upgrade.upgrade_leader") %></h2>
+          <div class="counter_text">
+            <h6 class="counter_title"><%= t("users.upgrade.upgrade_info") %></h6></div>
+          <h2 class="counter_title_1"><%= t("users.upgrade.warning") %></h2>
+          <h6 class="counter_title"><%= t("users.upgrade.warning_content") %></h6></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="counter_form">
+    <div class="row fill_height">
+      <div class="col fill_height">
+        <div class="counter_noti_ready_1"><h4><%= t("users.upgrade.ready") %></h4></div>
+        <div class="courses_button trans_500"><%= link_to t("users.upgrade.lets_upgrade_leader_now"), upgrade_leader_user_path(current_user.id) %></div>
+        <div><%= image_tag "https://res.cloudinary.com/gtm2018/image/upload/v1533260732/gallery_1.jpg", class: "welcome_image" %></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
