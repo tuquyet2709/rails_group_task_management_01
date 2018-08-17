@@ -33,6 +33,9 @@ vi:
     member_null: "group chưa có thành viên"
     deleted: "Đã xóa"
     wait_admin_activate: "Chờ admin kích hoạt"
+    upgrade_leader_success: "Upgrade leader thành công,đợi đến khi admin xác nhận!"
+    upgrade_leader_danger: "Upgrade leader không thành công,thử lại sau!"
+
   static_pages:
     home:
       title: "Trang chủ"
@@ -112,7 +115,7 @@ vi:
 
   profile:
     account: "Tài khoản"
-    profile: "Hồ sơ"
+    upgrade_leader: "Nâng cấp Leader"
     logout: "Đăng xuất"
     control: "Quản lý người dùng"
     edit_profile: "Sửa profile"
@@ -152,6 +155,12 @@ vi:
       delete: "Xóa"
       confirm: "Xác Nhận"
       active: "Kích hoạt"
+    upgrade:
+      upgrade_leader: "Nâng cấp lên Leader"
+      lets_upgrade_leader_now: "Nâng cấp Leader Ngay"
+      upgrade_info: "Nâng cấp lên  leader bạn có thể tạo task,tạo nhóm quản lý và hơn thế!"
+      warning: "Cảnh báo !"
+      warning_content: "Tài khoản của bạn sẽ không thể đăng nhập đến khi quản lý của chúng tôi xác nhận quyền leader cho bạn !"
 
   shared:
     error_messages:

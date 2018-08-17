@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       member do
         get :following, :followers
         match "search" => "users#search", via: [:get, :post], as: :search
+        get :upgrade
+        get :upgrade_leader
       end
     end
     resources :groups do

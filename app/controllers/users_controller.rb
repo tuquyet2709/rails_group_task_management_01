@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :find_user, only: [:edit, :update, :show, :destroy,
-                                   :followers, :following]
+                                   :followers, :following, :upgrade_leader]
 
   def new
     @user = User.new
@@ -61,10 +61,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    show_admin if @user.admin?
+    show_member if @user.member?
     if @user && @user.activated
-      show_member if @user.member?
       check_leader if @user.leader?
-      show_admin if @user.admin?
     else
       flash[:danger] = t "flash.wait_admin_activate"
       redirect_to root_url
@@ -120,6 +120,21 @@ class UsersController < ApplicationController
                   .page(params[:page])
                   .per Settings.users.per_page
     render "show_follow"
+  end
+
+  def upgrade
+    render "upgrade_leader"
+  end
+
+  def upgrade_leader
+    @user.role = "leader"
+    @user.activated = 0
+    if @user.save
+      flash[:success] = t "flash.upgrade_leader_success"
+    else
+      flash[:danger] = t "flash.upgrade_leader_danger"
+    end
+    redirect_to root_url
   end
 
   private

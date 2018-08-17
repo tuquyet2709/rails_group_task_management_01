@@ -1188,6 +1188,14 @@ subtask_row {
 	color: #FFFFFF;
 	font-weight: 700;
 }
+
+.counter_title_1
+{
+	font-family: 'Roboto Slab', serif;
+	color: #14bdee;
+	font-weight: 700;
+	margin-top: 25px;
+}
 .counter_text
 {
 	margin-top: 19px;
@@ -1362,6 +1370,12 @@ subtask_row {
 	display: block;
 	margin: 0 auto;
 	margin-top: 40px;
+	text-align: center;
+}
+.counter_noti_ready_1 {
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
 	text-align: center;
 }
 .welcome_image {
