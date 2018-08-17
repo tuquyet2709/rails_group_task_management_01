@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :tasks, foreign_key: "member_id"
   has_many :lead_groups, class_name: Group.name, foreign_key: "leader_id"
   has_many :group_members, foreign_key: "member_id"
@@ -74,6 +75,18 @@ class User < ApplicationRecord
 
   def in_group group
     GroupMember.where(group: group, user: self).blank?
+  end
+
+  def self.from_omniauth access_token
+    data = access_token.info
+    user = User.where(email: data["email"]).first
+
+    unless user
+      password = Devise.friendly_token[0, 20]
+      user = User.create(name: data["name"], email: data["email"],
+                         password: password, password_confirmation: password)
+    end
+    user
   end
 
   private

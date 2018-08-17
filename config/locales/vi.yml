@@ -108,6 +108,7 @@ vi:
       email_address: "Địa chỉ email"
       password: "Mật khẩu"
       or: "Hoặc"
+      or_sign_up_sign_in by: "Hoặc đăng nhập/đăng kí bằng"
 
   profile:
     account: "Tài khoản"

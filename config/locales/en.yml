@@ -108,6 +108,7 @@ en:
       email_address: "Email address"
       password: "Password"
       or: "Or"
+      or_sign_up_sign_in by: "Or sign up/sign in by"
 
   profile:
     account: "Account"
