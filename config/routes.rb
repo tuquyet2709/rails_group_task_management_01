@@ -8,12 +8,11 @@ Rails.application.routes.draw do
     post "/change_subtask", to: "tasks#change_subtask"
     devise_for :users, controllers: {
         confirmations: "confirmations" }, skip: [:omniauth_callbacks]
+    get "/add_user_subtask", to: "tasks#add_user_to_subtask"
     resources :users, only: [:show, :edit, :update] do
       member do
         get :following, :followers
         match "search" => "users#search", via: [:get, :post], as: :search
-        get :upgrade
-        get :upgrade_leader
       end
     end
     resources :groups do

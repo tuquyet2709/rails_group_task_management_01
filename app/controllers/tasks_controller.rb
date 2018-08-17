@@ -26,7 +26,7 @@ class TasksController < ApplicationController
                                          done_tasks: 0,
                                          group_task_id: group_taskid)
       @task.subtasks.each do |subtask|
-        subtask.done = 0
+        subtask.done = Subtask.statuses[:not_started]
       end
       @task.remain_time = @task.end_date - 12.hours if @task.end_date
       task_save
@@ -39,6 +39,14 @@ class TasksController < ApplicationController
     @tasks.each(&:destroy)
     flash[:info] = t "flash.deleted"
     redirect_to request.referrer || root_url
+  end
+
+  def add_user_to_subtask
+    @subtask = Subtask.find_by id: params[:subtask][:id]
+    @task = Task.find_by id: @subtask.task_id
+    @group = Group.find_by id: @task.group_id
+    return if @group.leader != current_user
+    @subtask.update_attributes user_subtask_params
   end
 
   def task_save
@@ -55,6 +63,7 @@ class TasksController < ApplicationController
   def statistic
     @users = @group.members.paginate page: params[:page],
                                      per: Settings.users.per_page
+    @users = @group.members.page(params[:page]).per Settings.users.per_page
     @task = Task.new
     @task_statistic = Task.where group_task_id: params[:id]
   end
@@ -72,6 +81,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def user_subtask_params
+    params.require(:subtask).permit :id, :user_id
+  end
 
   def check_members_exist
     return unless @group.members.count.zero?
