@@ -57,7 +57,7 @@
                 <li class="active"><%= link_to t("static_pages.home.title"), root_url %></li>
                 <% if user_signed_in? %>
                   <li><%= link_to t("static_pages.group.title"), groups_path %></a></li>
-                  <li><%= link_to t("static_pages.report.title"), current_user %></a></li>
+                  <li><%= link_to t("static_pages.report.title"), report_user_path(current_user.id) %></a></li>
                   <% if current_user.leader? %>
                     <li><%= link_to t("static_pages.group.group_management"), current_user %></a></li>
                   <% end %>

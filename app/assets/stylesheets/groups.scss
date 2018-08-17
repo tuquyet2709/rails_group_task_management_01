@@ -8,6 +8,7 @@
 }
 
 $blue2 : #14bdee;
+$grey : #eee;
 .FixedHeightContainer
 {
   display: none;
@@ -122,4 +123,8 @@ ul.c-controls li a i {
   height: 300px;
   bottom: 10%;
   left: 40%;
+}
+
+.grey {
+  background: $grey;
 }

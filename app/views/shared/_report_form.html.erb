@@ -14,7 +14,7 @@
           <div class="d-flex flex-row align-items-center justify-content-start">
             <label>Task</label>
             <div class="select-left">
-              <%= select_tag "report[task_content]", options_for_select(@tasks.collect {|task| [task.content, task.content]}),
+              <%= select_tag "report[task_content]", options_for_select(@tasks.collect {|task| [task.title, task.title]}),
                              include_blank: true, selected: :task_content, class: "custom-select col-md-4" %>
             </div>
 

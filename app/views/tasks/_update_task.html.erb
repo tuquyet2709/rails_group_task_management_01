@@ -1,0 +1,83 @@
+<div class="accordion_container">
+  <% if task != @last_task %>
+  <div class="accordion d-flex flex-row align-items-center">
+  <% else %>
+  <div class="accordion d-flex flex-row align-items-center active">
+  <% end %>
+    <table width="100%">
+      <tr>
+        <td width= "200"><%= task.title %></td>
+        <td width="150">
+          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+          <span class="badge-text"><%= task.end_date %></span>
+        </td>
+        <td width= "200">
+          <div class="progress">
+            <div class="progress-bar" id="dynamic<%= task.id %>" role="progressbar" aria-valuenow="<%= task.done_tasks %>" aria-valuemax="<%= task.subtasks.count %>" style="width:<%= ( task.done_tasks * 100 / task.subtasks.count) %>%">
+              <%= ( task.done_tasks * 100 / task.subtasks.count).round %>%
+            </div>
+          </div>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+  <div class="accordion_panel">
+    <hr>
+    <i class="fa fa-dot-circle-o" aria-hidden="true">
+      <%= task.content %>
+    </i>
+    <hr>
+    <i class="fa fa-angle-double-down" aria-hidden="true"> <%= t "tasks.show.subtask_list" %>: </i>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>status</th>
+          <th>subtask</th>
+          <th>member</th>
+          <th>estimate (h)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% task.subtasks.each do |subtask| %>
+          <tr>
+            <% if subtask.user == current_user %>
+              <td width="150">
+                <select onChange="change_status(<%= subtask.id %>,<%= task.id %>)" id="<%= subtask.id %>" onfocus="get_value(<%= subtask.id %>)" class="form-control">
+                  <option value="1" <% if subtask.done == 1 %> selected <% end %> ><%= t "task.not_started" %></option>
+                  <option value="2" <% if subtask.done == 2 %> selected <% end %> ><%= t "task.in_progress" %></option>
+                  <option value="3" <% if subtask.done == 3 %> selected <% end %> ><%= t "task.completed" %></option>
+                </select>
+              </td>
+            <% else %>
+              <% if subtask.done == Subtask.statuses[:not_started] %>
+                <td width="150" bgcolor="#EADEDB" class="text-center">
+                <%= t "not_started" %>
+              <% elsif subtask.done == Subtask.statuses[:in_progress] %>
+                <td width="150" bgcolor="#01FF70" class="text-center">
+                <%= t "in_progress" %>
+              <% else %>
+                <td width="150" bgcolor="#E94B3C" class="text-center">
+                <%= t "completed" %>
+              <% end %>
+              </td>
+            <% end %>
+            <td width="200">&ensp;<%= subtask.content %></td>
+            <td width="200">
+              <% if subtask.user %>
+                <%= subtask.user.name %>
+              <% else %>
+                <%= t "task.not_assigned" %>
+              <% end %>
+              </td>
+            <td width="100">
+              <input type="text" name="<%= subtask.id %>" onkeydown="estimate(this)" value="<%= subtask.estimate %>" <% unless current_user== subtask.user %> readonly <% end %> >
+            </td>
+
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

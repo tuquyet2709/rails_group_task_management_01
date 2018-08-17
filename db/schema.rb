@@ -65,11 +65,9 @@ ActiveRecord::Schema.define(version: 20180817044551) do
     t.date "start_date"
     t.date "end_date"
     t.integer "group_id"
-    t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.integer "group_task_id"
     t.datetime "remain_time"
     t.integer "done_tasks"
   end
@@ -78,7 +76,7 @@ ActiveRecord::Schema.define(version: 20180817044551) do
     t.string "name"
     t.string "email", default: "", null: false
     t.boolean "activated"
-    t.integer "role", default: 1
+    t.integer "role", default: 2
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

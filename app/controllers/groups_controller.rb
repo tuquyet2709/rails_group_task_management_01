@@ -35,13 +35,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    check_leader_or_member params[:id]
+    check_leader_or_member @group.id
     find_users_in_group
     @task = Task.new
-    return if current_user.leader?
-    @user_tasks = current_user.tasks
-                              .where(group_id: @group.id)
-                              .order updated_at: :desc
   end
 
   def index
@@ -128,16 +124,22 @@ class GroupsController < ApplicationController
     flash[:danger] = t "flash.cant_find_group"
   end
 
-  def find_users_in_group
-    find_group
-    @users_in_group = User.where(role: "member")
-                          .page(params[:page])
-                          .per Settings.users.per_page_search_member
-    @q = @users_in_group.search params[:q]
+  def get_member
     @users = if params[:q].present?
                @q.result distinct: true
              else
-               @users_in_group
+               @group.members
+                     .page(params[:page])
+                     .per Settings.users.per_page_search_member
              end
+  end
+
+  def find_users_in_group
+    find_group
+    @users_in_group = User.all
+                          .page(params[:page])
+                          .per Settings.users.per_page_search_member
+    @q = @users_in_group.search params[:q]
+    get_member
   end
 end

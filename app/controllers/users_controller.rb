@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :find_user, only: [:edit, :update, :show, :destroy,
-                                   :followers, :following, :upgrade_leader]
+    :followers, :following, :upgrade_leader, :report]
 
   def new
     @user = User.new
@@ -69,6 +69,10 @@ class UsersController < ApplicationController
       flash[:danger] = t "flash.wait_admin_activate"
       redirect_to root_url
     end
+  end
+
+  def report
+    show_member
   end
 
   def show_admin
@@ -161,7 +165,13 @@ class UsersController < ApplicationController
   end
 
   def search_tasks_and_subtasks
-    @tasks = Task.where(member_id: current_user.id)
-    @subtask = @tasks.map(&:subtasks).flatten
+    @subtask = current_user.subtasks
+    @tasks = []
+    preve = nil
+    @subtask.each do |sub|
+      @tasks.push sub.task if preve != sub.task
+      preve = sub.task
+      sub.content << " - #{sub.task.title}"
+    end
   end
 end

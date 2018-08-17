@@ -5,7 +5,6 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.date :start_date
       t.date :end_date
       t.integer :group_id
-      t.integer :member_id
 
       t.timestamps
     end

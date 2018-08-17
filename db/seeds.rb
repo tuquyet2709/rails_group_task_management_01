@@ -44,7 +44,11 @@ end
 member = User.where(role: 2).limit(10)
 30.times do
   content = Faker::Lorem.sentence(5)
-  member.each { |member| member.reports.create!(content: content) }
+  task_name = "task first"
+  subtask_name = "subtask"
+  member.each { |member| member.reports.create!(content: content,
+    task_content: task_name,
+    subtask_content: subtask_name) }
 end
 # Add relationships
 members = User.where(role: 2).all

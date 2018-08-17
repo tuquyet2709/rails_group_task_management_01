@@ -13,6 +13,8 @@ class TasksController < ApplicationController
   before_action only: [:statistic, :destroy] do
     check_leader_group params[:group_id]
   end
+  before_action :subtask_belongs_to_user,
+    only: [:change_subtask, :estimate]
 
   def show
     @users = @group.members.page(params[:page])
@@ -20,17 +22,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    group_taskid = generate_group_task_id
-    @group.members.each do |member|
-      @task = Task.new task_params.merge(member_id: member.id,
-                                         done_tasks: 0,
-                                         group_task_id: group_taskid)
-      @task.subtasks.each do |subtask|
-        subtask.done = Subtask.statuses[:not_started]
-      end
-      @task.remain_time = @task.end_date - 12.hours if @task.end_date
-      task_save
+    @task = Task.new task_params.merge(done_tasks: 0)
+    @task.subtasks.each do |subtask|
+      subtask.done = Subtask.statuses[:not_started]
+      subtask.estimate = 0
     end
+    @task.remain_time = @task.end_date - 12.hours if @task.end_date
+    task_save
     redirect_to group_path(@group.id)
   end
 
@@ -52,9 +50,6 @@ class TasksController < ApplicationController
   def task_save
     if @task.save
       flash[:info] = t "flash.add_task_successful"
-      @group.members.each do |member|
-        member.sent_mail_deadline @task
-      end
     else
       flash[:danger] = @task.errors.full_messages
     end
@@ -69,18 +64,34 @@ class TasksController < ApplicationController
   end
 
   def change_subtask
-    @subtask = Subtask.find_by id: params[:subtask][:subtask_id]
-    @subtask.update_attribute :done, !@subtask.done?
     @task = Task.find_by id: @subtask.task_id
-    @task.done_tasks = @task.subtasks.where(done: true).count
+    check_done
     @task.save
-    respond_to do |format|
-      format.js
-      format.html
+    @subtask.done = params[:subtask][:status]
+    @subtask.save
+  end
+
+  def check_done
+    if params[:subtask][:status].to_i == Subtask.statuses[:completed]
+      @task.done_tasks += 1
+    elsif @subtask.done == Subtask.statuses[:completed]
+      @task.done_tasks -= 1
     end
   end
 
+  def estimate
+    @subtask.estimate = params[:subtask][:estimate]
+    @subtask.save
+  end
+
   private
+
+  def subtask_belongs_to_user
+    @subtask = Subtask.find_by id: params[:subtask][:id]
+    return if @subtask.user == current_user
+    redirect_to root_path
+    flash[:danger] = t "flash.dont_have_permission"
+  end
 
   def user_subtask_params
     params.require(:subtask).permit :id, :user_id
@@ -90,11 +101,6 @@ class TasksController < ApplicationController
     return unless @group.members.count.zero?
     redirect_to group_path(@group.id)
     flash[:danger] = t "flash.member_null"
-  end
-
-  def generate_group_task_id
-    return 1 if Task.last.blank?
-    Task.last.group_task_id + 1
   end
 
   def find_group group_id

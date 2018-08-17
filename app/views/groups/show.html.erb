@@ -1,5 +1,5 @@
 <% provide :title, t("groups.group") %>
-<div class="courses">
+<div class="courses grey">
   <div class="container">
     <div class="row">
       <!-- Courses Sidebar -->
@@ -11,31 +11,20 @@
         </center>
         <div class="courses_container">
           <div class="row courses_row">
-            <% if current_user.leader? %>
-              <% unless @group.tasks.blank? %>
-                <% listTask = @group.tasks.order_gti_asc %>
-                <% i =  listTask.blank? ? 1 : (listTask.first.group_task_id) - 1  %>
-                <% listTask.each do |task| %>
-                  <% unless i == task.group_task_id %>
-                    <% i = task.group_task_id %>
-                    <%= render "tasks/task", task: task %>
-                  <% end %>
+            <% unless @group.tasks.blank? %>
+              <% listTask = @group.tasks.order_gti_asc %>
+              <% @last_task = listTask.first %>
+              <% listTask.each do |task| %>
+                <% if current_user.is_leader_group?(@group.id) %>
+                  <%= render "tasks/task", task: task %>
+                <% else %>
+                  <%= render "tasks/update_task", task: task %>
                 <% end %>
-              <% else %>
-                <div class="div-center">
-                  <%= t "groups.task_nil" %>
-                </div>
               <% end %>
             <% else %>
-              <% unless @user_tasks.blank? %>
-                <% @user_tasks.each do |task| %>
-                    <%= render "tasks/task", task: task %>
-                <% end %>
-              <% else %>
-                <div class="div-center">
-                  <%= t "groups.task_nil" %>
-                </div>
-              <% end %>
+              <div class="div-center">
+                <%= t "groups.task_nil" %>
+              </div>
             <% end %>
           </div>
         </div>
