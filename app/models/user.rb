@@ -31,6 +31,8 @@ class User < ApplicationRecord
     where("name like ? and role = ?", "%#{name}%", User.roles[:member])
   end)
 
+  mount_base64_uploader :picture, PictureUploader
+
   class << self
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost

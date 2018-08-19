@@ -1,5 +1,9 @@
 <li class="margin_li_user">
-  <%= gravatar_for user, size: Settings.users.size_page %>
+  <% if @user.picture? %>
+    <%= cloudinary_avatar_for @user %>
+  <% else %>
+    <%= gravatar_for @user, size: Settings.users.size_page %>
+  <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to t("users.delete.delete"), user, method: :delete,

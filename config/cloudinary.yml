@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: gtm2018
+  api_key: 562615389416568
+  api_secret: MpySDS4kpsMax8HBlCL2JPBK7dU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: gtm2018
+  api_key: 562615389416568
+  api_secret: ENV["CLOUDINARY_API_SECRET"]
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: gtm2018
+  api_key: 562615389416568
+  api_secret: ENV["CLOUDINARY_API_SECRET"]
+  enhance_image_tag: true
+  static_image_support: false
