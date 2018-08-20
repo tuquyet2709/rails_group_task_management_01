@@ -35,6 +35,7 @@ en:
     wait_admin_activate: "Wait admin activate"
     upgrade_leader_success: "Upgrade leader success, Wait until admin confirmed!"
     upgrade_leader_danger: "Upgrade leader not success, try again later!"
+    dont_have_permission: "you are not have permission"
 
   static_pages:
     home:
@@ -223,6 +224,11 @@ en:
     leader_wait: "Leader waiting"
     create_task: "Create new task"
   task:
+    not_started: "Not started"
+    in_progress: "In progress"
+    completed: "Completed"
+    estimate: "estimate"
+    not_assigned: "Not assigned"
     title: "Task title"
     deadline: "Deadline"
     submit: "submit"

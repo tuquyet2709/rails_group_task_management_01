@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get "static_pages/home"
     post "/add_member", to: "groups#add_member"
     delete "/remove_member", to: "groups#remove_member"
-    post "/change_subtask", to: "tasks#change_subtask"
+    get "/change_subtask", to: "tasks#change_subtask"
+    get "/estimate", to: "tasks#estimate"
     devise_for :users, controllers: {
         confirmations: "confirmations" }, skip: [:omniauth_callbacks]
     get "/add_user_subtask", to: "tasks#add_user_to_subtask"
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
       member do
         get :following, :followers
         match "search" => "users#search", via: [:get, :post], as: :search
+        get :upgrade
+        get :upgrade_leader
+        get :report
       end
     end
     resources :groups do

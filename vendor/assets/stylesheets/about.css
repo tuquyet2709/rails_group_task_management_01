@@ -948,11 +948,11 @@ section
 }
 .accordion div
 {
-	max-width: 90%;
+	max-width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
-	font-size: 20px;
-	font-weight: 700;
+	font-size: 15px;
+	font-weight: 500;
 	color: #384158;
 }
 .accordion::before

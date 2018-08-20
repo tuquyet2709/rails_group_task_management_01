@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2]
-  has_many :tasks, foreign_key: "member_id"
+  has_many :subtasks
   has_many :lead_groups, class_name: Group.name, foreign_key: "leader_id"
   has_many :group_members, foreign_key: "member_id"
   has_many :groups, through: :group_members, source: :group
@@ -75,6 +75,12 @@ class User < ApplicationRecord
 
   def in_group group
     GroupMember.where(group: group, user: self).blank?
+  end
+
+  def is_leader_group? group_id
+    group = Group.find_by id: group_id
+    return false unless group
+    group.leader == self
   end
 
   def self.from_omniauth access_token

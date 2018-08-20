@@ -35,6 +35,7 @@ vi:
     wait_admin_activate: "Chờ admin kích hoạt"
     upgrade_leader_success: "Upgrade leader thành công,đợi đến khi admin xác nhận!"
     upgrade_leader_danger: "Upgrade leader không thành công,thử lại sau!"
+    dont_have_permission: "bạn không được cho phép"
 
   static_pages:
     home:
@@ -220,6 +221,11 @@ vi:
     leader_wait: "Hàng đợi Leader"
     create_task: "Tạo task mới"
   task:
+    not_started: "Chưa bắt đầu"
+    in_progress: "Đang làm"
+    completed: "Hoàn thành"
+    not_assigned: "chưa phân công"
+    estimate: "ước lượng"
     title: "Tiêu đề task"
     deadline: "Thời hạn"
     submit: "xác nhận"
