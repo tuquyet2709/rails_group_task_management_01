@@ -9,9 +9,16 @@
         <%= f.email_field :email, class: "form-control", placeholder: t("users.new.email_address") %>
         <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("users.new.password_confirmation") %>
+        <div class="gravatar_edit">
+          <% if @user.picture? %>
+            <%= cloudinary_avatar_for @user %>
+          <% else %>
+            <%= gravatar_for @user %>
+          <% end %>
+          <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+        </div>
         <%= f.submit t(".save_changes"), class: "btn btn-lg btn-primary btn-block btn-signin" %>
       <% end %>
     </div>
   </div>
-
 </div>

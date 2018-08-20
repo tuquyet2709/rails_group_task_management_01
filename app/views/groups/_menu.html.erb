@@ -6,16 +6,16 @@
       <div class="sidebar_categories">
 
         <strong><i class="fa fa-id-badge" aria-hidden="true"></i>
-        <%= t "groups.name" %>:</strong> <%= @group.name %><br>
+          <%= t "groups.name" %>:</strong> <%= @group.name %><br>
         <strong><i class="fa fa-user" aria-hidden="true"></i>
-        <%= t "index_admin.leader" %>:</strong> <%= @group.leader.name %>
+          <%= t "index_admin.leader" %>:</strong> <%= @group.leader.name %>
         <br><br>
         <ul>
           <% if current_user.leader? %>
-          <li>
-            <%= link_to t("groups.create_tasks"), "#", "data-toggle": "modal",
-            "data-target": "#squarespaceModal" %>
-          </li>
+            <li>
+              <%= link_to t("groups.create_tasks"), "#", "data-toggle": "modal",
+                          "data-target": "#squarespaceModal" %>
+            </li>
           <% end %>
           <li><%= link_to t("groups.task_list"), @groups %></li>
           <li><%= link_to t("static_pages.home.title"), root_path %></li>
@@ -27,55 +27,61 @@
     <!-- Latest Course -->
     <div class="sidebar_section">
       <% if current_user.leader? %>
-      <div class="courses_search_container">
-        <%= search_form_for @q, url: search_group_path, html: {method: :post} do |sf| %>
-        <%= sf.text_field :name_cont, class: "courses_search_input",
-                          placeholder: t("groups.search_member"), required: "required"%>
-        <%= sf.submit class: "search-button-group"%>
-        <% end %>
-      </div>
+        <div class="courses_search_container">
+          <%= search_form_for @q, url: search_group_path, html: {method: :post} do |sf| %>
+            <%= sf.text_field :name_cont, class: "courses_search_input",
+                              placeholder: t("groups.search_member"), required: "required" %>
+            <%= sf.submit class: "search-button-group" %>
+          <% end %>
+        </div>
       <% end %>
       <div class="sidebar_section_title"><%= t "groups.members" %></div>
       <div class="sidebar_latest">
         <% unless @users.blank? %>
-        <% @users.each do |user| %>
-        <!-- Latest Course -->
-        <div class="latest d-flex flex-row align-items-start justify-content-start">
-          <div class="latest_image">
-            <div><%= gravatar_for user, size: Settings.users.size_page %></div>
-          </div>
-          <div class="latest_content">
-            <div class="latest_title">
-              <%= link_to user.name, user_path(user.id) %>
+          <% @users.each do |user| %>
+            <!-- Latest Course -->
+            <div class="latest d-flex flex-row align-items-start justify-content-start">
+              <div class="latest_image">
+                <div>
+                  <% if @user.picture? %>
+                    <%= cloudinary_avatar_for @user %>
+                  <% else %>
+                    <%= gravatar_for @user, size: Settings.users.size_page %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="latest_content">
+                <div class="latest_title">
+                  <%= link_to user.name, user_path(user.id) %>
+                </div>
+                <div class="latest_price">
+                  <% if current_user.leader? %>
+                    <% if user.in_group @group %>
+                      <%= link_to add_member_path(group_member: {group_id: @group.id,
+                                                                 member_id: user.id}), method: :post do %>
+                        <i class="fa fa-user-plus" aria-hidden="true"> add </i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to remove_member_path(group_member: {group_id: @group.id,
+                                                                    member_id: user.id}), method: :delete,
+                                  data: {confirm: t("users.delete.confirm")} do %>
+                        <i class="fa fa-user-times" aria-hidden="true">
+                          <%= t "users.delete.delete" %>
+                        </i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <div class="latest_price">
-              <% if current_user.leader? %>
-              <% if user.in_group @group %>
-              <%= link_to add_member_path(group_member: {group_id: @group.id,
-               member_id: user.id}), method: :post do %>
-               <i class="fa fa-user-plus" aria-hidden="true"> add </i>
-               <% end %>
-               <% else %>
-               <%= link_to remove_member_path(group_member: {group_id: @group.id,
-                 member_id: user.id}), method: :delete,
-                 data: {confirm: t("users.delete.confirm")} do %>
-                 <i class="fa fa-user-times" aria-hidden="true">
-                  <%= t "users.delete.delete" %>
-                 </i>
-                 <% end %>
-                 <% end %>
-                 <% end %>
-               </div>
-             </div>
-           </div>
-           <% end %>
-           <% else %>
-             <div class="div-center">
-               <%= t "groups.member_nil" %>
-             </div>
-           <% end %>
+          <% end %>
+        <% else %>
+          <div class="div-center">
+            <%= t "groups.member_nil" %>
+          </div>
+        <% end %>
         <%= paginate @users, theme: "twitter-bootstrap-4" %>
-         </div>
-       </div>
-     </div>
-   </div>
+      </div>
+    </div>
+  </div>
+</div>

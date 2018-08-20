@@ -29,16 +29,16 @@ class UsersController < ApplicationController
       find_report
     else
       @report_ano = @user.reports.order_desc
-                         .page(params[:page])
-                         .per Settings.users.per_page
+                        .page(params[:page])
+                        .per Settings.users.per_page
     end
     render "show_member"
   end
 
   def find_report
     @reports = current_user.feed.order_desc
-                           .page(params[:page])
-                           .per Settings.users.per_page
+                   .page(params[:page])
+                   .per Settings.users.per_page
     @q = @reports.search(params[:q])
     check_search
   end
@@ -92,12 +92,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;
+  end
 
   def update
     if @user.update_attributes user_params
       flash[:success] = t "flash.user_updated"
-      redirect_to @user
+      # upload = Cloudinary::Uploader.upload(user_params[:picture], options = {})
+      # image_url = upload["url"].to_s
+      # @user.update_attributes picture: image_url
+      #em de cai nay len nhung khong duoc :((
+
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -113,16 +119,16 @@ class UsersController < ApplicationController
   def following
     @title = t "follow.following"
     @users = @user.following
-                  .page(params[:page])
-                  .per Settings.users.per_page
+                 .page(params[:page])
+                 .per Settings.users.per_page
     render "show_follow"
   end
 
   def followers
     @title = t "follow.follower"
     @users = @user.followers
-                  .page(params[:page])
-                  .per Settings.users.per_page
+                 .page(params[:page])
+                 .per Settings.users.per_page
     render "show_follow"
   end
 
@@ -152,7 +158,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation, :role
+                                 :password_confirmation, :role, :picture
   end
 
   def correct_user
