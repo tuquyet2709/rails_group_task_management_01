@@ -8,13 +8,9 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended that you check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180817044551) do
-=======
-ActiveRecord::Schema.define(version: 20180817035719) do
->>>>>>> 2de8966... add_images
 
   create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "member_id"
